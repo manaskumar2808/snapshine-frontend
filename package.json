@@ -9,11 +9,26 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.5",
+    "babel-plugin-styled-components": "^2.1.1",
+    "bootstrap": "^5.2.3",
     "eslint": "8.39.0",
     "eslint-config-next": "13.3.1",
     "next": "13.3.1",
+    "next-redux-wrapper": "^8.1.0",
     "react": "18.2.0",
+    "react-bootstrap": "^2.7.4",
     "react-dom": "18.2.0",
+    "react-draggable": "^4.4.5",
+    "react-icons": "^4.8.0",
+    "react-loader-spinner": "^5.3.4",
+    "react-redux": "^8.0.5",
+    "react-resizable": "^3.0.5",
+    "redux": "^4.2.1",
     "styled-components": "^5.3.10"
+  },
+  "devDependencies": {
+    "babel-plugin-macros": "^3.1.0",
+    "babel-plugin-module-resolver": "^5.0.0"
   }
 }

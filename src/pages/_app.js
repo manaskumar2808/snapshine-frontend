@@ -1,11 +1,16 @@
 import '@/styles/globals.css';
 import { APP_THEME } from '@/constants/Theme';
 import { ThemeProvider } from 'styled-components';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-resizable/css/styles.css';
+import { wrapper } from '../store';
 
-export default function App({ Component, pageProps }) {
+const App = ({ Component, pageProps }) => {
   return (
     <ThemeProvider theme={APP_THEME}>
       <Component {...pageProps} />
     </ThemeProvider>
   );
 }
+
+export default wrapper.withRedux(App);
