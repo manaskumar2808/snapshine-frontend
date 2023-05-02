@@ -1,8 +1,6 @@
 export class ToolType { 
-    constructor(id, text, IconComponent, EditorComponent) {
+    constructor(id, text) {
         this.id = id;
         this.text = text;
-        this.IconComponent = IconComponent;
-        this.EditorComponent = EditorComponent;
     }
 }

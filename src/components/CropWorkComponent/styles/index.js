@@ -5,12 +5,11 @@ export const Container = styled.div`
 `;
 
 export const Grid = styled.div`
-    /* height: 400px; */
     width: 100%;
     overflow: hidden;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(4, 78px);
+    grid-template-rows: repeat(3, 78px);
     gap: 10px;
     margin-top: 10px;
 `;

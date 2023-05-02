@@ -10,6 +10,7 @@ const initialState = {
         height: 0,
         width: 0,
         unit: 'px',
+        aspect: 1.0,
     },
     active: false,
     error: null,

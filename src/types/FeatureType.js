@@ -6,11 +6,9 @@ export class FeatureOptions {
 }
 
 export class FeatureType { 
-    constructor(id, title, IconComponent, WorkComponent = null, featureOptions = null) {
+    constructor(id, title, featureOptions = null) {
         this.id = id;
         this.title = title;
-        this.IconComponent = IconComponent;
-        this.WorkComponent = WorkComponent;
         this.featureOptions = featureOptions
     }
 }

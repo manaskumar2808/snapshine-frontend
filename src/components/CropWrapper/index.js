@@ -3,9 +3,9 @@ import { Container } from './styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { setImage } from '@/store/actions/image';
 import { cropImage, setCropParams } from '@/store/actions/crop';
-import { DEFAULT_WIDTH } from '@/constants/Default';
+import { DEFAULT_HEIGHT, DEFAULT_WIDTH } from '@/constants/Default';
 import { setActiveFeature } from '@/store/actions/feature';
-import { CropOptionMap } from '@/data/crop-options';
+import { CropOptionMap, lockAspectRatio } from '@/data/crop-options';
 
 const CropWrapper = ({ children }) => { 
     const dispatch = useDispatch();
@@ -19,9 +19,10 @@ const CropWrapper = ({ children }) => {
             dispatch(setCropParams({
                 x: 0,
                 y: 0,
-                width: image.width,
                 height: image.height,
-                unit: 'px'
+                width: image.width,
+                unit: 'px',
+                aspect: image.width / image.height,
             }));
         }
     }, [dispatch, image]);
@@ -32,9 +33,9 @@ const CropWrapper = ({ children }) => {
         dispatch(cropImage(false));
     }, [active, onCropComplete, dispatch]);
     
-    const setCrop = useCallback((crop) => { 
-        dispatch(setCropParams(crop));
-    }, [dispatch]);
+    const setCrop = (c) => { 
+        dispatch(setCropParams(lockAspectRatio(c, crop, image, cropOption)));
+    }
 
     const onCropComplete = useCallback(() => {
         const canvas = document.createElement('canvas');
@@ -74,9 +75,14 @@ const CropWrapper = ({ children }) => {
         const naturalHeight = canvas.height;
         const naturalWidth = canvas.width;
         const aspectRatio = naturalWidth / naturalHeight;
-        const height = DEFAULT_WIDTH / aspectRatio;
-        const width = DEFAULT_WIDTH;
-
+        let height, width;
+        if (naturalWidth > naturalHeight) {
+            height = DEFAULT_WIDTH / aspectRatio;
+            width = DEFAULT_WIDTH;
+        } else {
+            height = DEFAULT_HEIGHT;
+            width = aspectRatio * DEFAULT_HEIGHT;
+        }
         dispatch(setImage({ src, alt, height, width, aspectRatio, naturalHeight, naturalWidth }));
         dispatch(setActiveFeature(null));
     }, [crop, image, dispatch]);
@@ -86,7 +92,10 @@ const CropWrapper = ({ children }) => {
             // ruleOfThirds
             crop={crop}
             onChange={c => setCrop(c)}
-            keepSelection={cropOption && cropOption.id !== CropOptionMap.FreeForm.id}
+            // maxHeight={image ? image.height : 0}
+            // minWidth={image ? image.width : 0}
+            // keepSelection={cropOption && cropOption.id !== CropOptionMap.FreeForm.id}
+            // circularCrop={cropOption && cropOption.id === CropOptionMap.Circle.id}
         >
             {children}
         </Container>

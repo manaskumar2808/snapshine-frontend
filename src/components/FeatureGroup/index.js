@@ -7,12 +7,10 @@ const FeatureGroup = ({ id, featureList = [], title }) => {
             <Title>{title}</Title>
             <div style={{ height: 10 }} />
             <List>
-                {featureList.map(({ id, title, IconComponent, WorkComponent, featureOptions }) => <Feature
+                {featureList.map(({ id, title, featureOptions }) => <Feature
                     key={id}
                     id={id}
                     title={title}
-                    IconComponent={IconComponent}
-                    WorkComponent={WorkComponent}
                     featureOptions={featureOptions}
                 />)}
             </List>

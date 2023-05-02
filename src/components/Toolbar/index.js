@@ -1,14 +1,8 @@
 import { Container } from './styles';
-import { HiOutlineAdjustments } from 'react-icons/hi';
 import Icon from '../Icon';
-import { ToolType } from '@/types/ToolType';
-import AdjustmentEditor from '../AdjustmentEditor';
+import { Tools } from '@/data/tools';
 
 const Toolbar = ({ activeTool, setTool }) => {
-    const tools = [
-        new ToolType('t00', 'Adjustments', HiOutlineAdjustments, AdjustmentEditor)
-    ];
-
     const toolClickHandler = (tool) => { 
         if (activeTool && activeTool.id === tool.id)
             setTool(null);
@@ -18,11 +12,11 @@ const Toolbar = ({ activeTool, setTool }) => {
 
     return (
         <Container>
-            {tools.map((tool) => <Icon
+            {Tools.map((tool) => <Icon
                 key={tool.id}
+                id={tool.id}
                 text={tool.text}
                 active={activeTool && tool.id === activeTool.id}
-                IconComponent={tool.IconComponent}
                 toolClickHandler={() => toolClickHandler(tool)}
             />)}
         </Container>

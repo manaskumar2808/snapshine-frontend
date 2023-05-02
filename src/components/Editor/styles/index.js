@@ -8,6 +8,6 @@ export const Container = styled.div`
     overflow-x: hidden;
     overflow-y: auto;
     height: 100%;
-    width: 400px;
+    width: 300px;
     box-sizing: border-box;
 `;

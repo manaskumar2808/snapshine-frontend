@@ -4,8 +4,10 @@ import { FiChevronRight, FiChevronDown } from 'react-icons/fi';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setActiveFeature } from '@/store/actions/feature';
+import IconComponent from '../IconComponent';
+import WorkComponent from '../WorkComponent';
 
-const Feature = ({ id, IconComponent, title, WorkComponent, featureOptions }) => { 
+const Feature = ({ id, title, featureOptions }) => { 
     const theme = useTheme();
     const dispatch = useDispatch();
 
@@ -33,7 +35,7 @@ const Feature = ({ id, IconComponent, title, WorkComponent, featureOptions }) =>
         <Container>
             <Row onClick={clickHandler}>
                 <Section>
-                    <IconComponent size={iconSize} color={iconColor} />
+                    <IconComponent id={id} size={iconSize} color={iconColor} />
                 </Section>
                 <div style={{ width: 10 }} />
                 <Section>
@@ -47,7 +49,7 @@ const Feature = ({ id, IconComponent, title, WorkComponent, featureOptions }) =>
                      <FiChevronRight size={iconSize} color={iconColor} /> }
                 </Section>
             </Row>
-            {openFeature && WorkComponent && <WorkComponent />}
+            {openFeature && <WorkComponent id={id} />}
         </Container>
     );
 }
