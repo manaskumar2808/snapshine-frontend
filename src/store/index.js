@@ -1,12 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { combineReducers } from 'redux';
+import { applyMiddleware, combineReducers } from 'redux';
 import { createWrapper } from 'next-redux-wrapper';
-import ImageReducer from './reducers/image';
+import reducerMap from './reducers';
+import thunk from 'redux-thunk';
 
-const reducer = combineReducers({
-    img: ImageReducer
-});
+const reducer = combineReducers(reducerMap);
 
-const makeStore = () => configureStore({ reducer });
+const makeStore = () => configureStore({ reducer }, applyMiddleware(thunk));
 
 export const wrapper = createWrapper(makeStore);

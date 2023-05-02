@@ -19,4 +19,5 @@ export const Row = styled.div`
     flex-direction: row;
     flex: 1;
     padding: 5px;
+    box-sizing: border-box;
 `;

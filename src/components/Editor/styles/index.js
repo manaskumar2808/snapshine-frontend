@@ -9,4 +9,5 @@ export const Container = styled.div`
     overflow-y: auto;
     height: 100%;
     width: 400px;
+    box-sizing: border-box;
 `;

@@ -8,8 +8,8 @@ export const Row = styled.div`
     flex-direction: row;
     align-items: center;
     background-color: ${({ theme }) => theme.colors.milk};
-    padding: 5px 10px;
-    height: 60px;
+    padding: 0px 10px;
+    height: 50px;
     border-radius: 5px;
 `;
 

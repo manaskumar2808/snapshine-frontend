@@ -2,16 +2,30 @@ import { useTheme } from 'styled-components';
 import { Container, Row, Section, Title } from './styles';
 import { FiChevronRight, FiChevronDown } from 'react-icons/fi';
 import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setActiveFeature } from '@/store/actions/feature';
 
-const Feature = ({ IconComponent, title, WorkComponent }) => { 
+const Feature = ({ id, IconComponent, title, WorkComponent, featureOptions }) => { 
     const theme = useTheme();
+    const dispatch = useDispatch();
+
+    const feature = useSelector(({ftr}) => ftr.feature);
+
     const iconSize = 18;
     const iconColor = theme.colors.dark;
 
     const [openFeature, setOpenFeature] = useState(false);
-    const [ActionComponent, setActionComponent] = useState(FiChevronRight);
 
-    const clickHandler = () => { 
+    useEffect(() => { 
+        if (!feature || feature.id !== id)
+            setOpenFeature(false);
+    }, [feature, id]);
+
+    const clickHandler = () => {
+        if (openFeature)
+            dispatch(setActiveFeature(null));
+        else
+            dispatch(setActiveFeature({id, IconComponent, title, WorkComponent, featureOptions}))
         setOpenFeature(state => !state);
     }
 
