@@ -2,6 +2,11 @@ import { CropOptionType } from '../types/CropOptionType';
 
 export const updateCropWithAspectRatio = (crop, image, aspect, cropShape = "rectangle") => {
   let newCrop = { ...crop };
+
+  if (aspect === -1) {
+    aspect = image.width / image.height;
+  }
+
   if (cropShape !== 'rectangle') {
     if (cropShape === 'circle') {
       newCrop = {
@@ -127,18 +132,18 @@ export const lockAspectRatio = (crop, prevCrop, image, cropOption) => {
 }
 
 export const CropOptionMap = {
-    FreeForm: new CropOptionType('co00', 'Freeform', (crop, image) => (crop)),
-    Crop1x1: new CropOptionType('co01', '1 x 1', (crop, image) => updateCropWithAspectRatio(crop, image, 1.0)),
-    Crop3x2: new CropOptionType('co02', '3 x 2', (crop, image) => updateCropWithAspectRatio(crop, image, 3.0/2.0)),
-    Crop2x3: new CropOptionType('co03', '2 x 3', (crop, image) => updateCropWithAspectRatio(crop, image, 2.0/3.0)),
-    Crop4x3: new CropOptionType('co04', '4 x 3', (crop, image) => updateCropWithAspectRatio(crop, image, 4.0/3.0)),
-    Crop3x4: new CropOptionType('co05', '3 x 4', (crop, image) => updateCropWithAspectRatio(crop, image, 3.0/4.0)),
-    Crop16x9: new CropOptionType('co06', '16 x 9', (crop, image) => updateCropWithAspectRatio(crop, image, 16.0/9.0)),
-    Crop9x16: new CropOptionType('co07', '9 x 16', (crop, image) => updateCropWithAspectRatio(crop, image, 9.0/16.0)),
-    OriginalRation: new CropOptionType('co08', 'Original Ratio', (crop, image) => updateCropWithAspectRatio(crop, image, image.width / image.height)),
-    // Circle: new CropOptionType('co09', 'Circle', (crop, image) => updateCropWithAspectRatio(crop, image, 1.0, "circle")),
-    // Triangle: new CropOptionType('co10', 'Triangle', (crop, image) => updateCropWithAspectRatio(crop, image, 1.0, "triangle")),
-    // Heart: new CropOptionType('co11', 'Heart', (crop, image) => updateCropWithAspectRatio(crop, image, 1.0, "heart")),
+    FreeForm: new CropOptionType('co00', 'Freeform', -1),
+    Crop1x1: new CropOptionType('co01', '1 x 1', 1.0),
+    Crop3x2: new CropOptionType('co02', '3 x 2', 3.0/2.0),
+    Crop2x3: new CropOptionType('co03', '2 x 3', 2.0/3.0),
+    Crop4x3: new CropOptionType('co04', '4 x 3', 4.0/3.0),
+    Crop3x4: new CropOptionType('co05', '3 x 4', 3.0/4.0),
+    Crop16x9: new CropOptionType('co06', '16 x 9', 16.0/9.0),
+    Crop9x16: new CropOptionType('co07', '9 x 16', 9.0/16.0),
+    OriginalRation: new CropOptionType('co08', 'Original Ratio', -1),
+    // Circle: new CropOptionType('co09', 'Circle', 1.0, "circle")),
+    // Triangle: new CropOptionType('co10', 'Triangle', 1.0, "triangle")),
+    // Heart: new CropOptionType('co11', 'Heart', 1.0, "heart")),
 };
 
 export const CropOptions = Object.values(CropOptionMap).map(cropOption => cropOption);

@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setActiveFeature } from '@/store/actions/feature';
 import IconComponent from '../IconComponent';
-import WorkComponent from '../WorkComponent';
+import WorkComponent from '../work-components/WorkComponent';
 
 const Feature = ({ id, title, featureOptions }) => { 
     const theme = useTheme();
@@ -27,7 +27,7 @@ const Feature = ({ id, title, featureOptions }) => {
         if (openFeature)
             dispatch(setActiveFeature(null));
         else
-            dispatch(setActiveFeature({id, IconComponent, title, WorkComponent, featureOptions}))
+            dispatch(setActiveFeature({id, title, featureOptions}))
         setOpenFeature(state => !state);
     }
 

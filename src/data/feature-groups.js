@@ -6,7 +6,7 @@ export const FeatureGroupTitle = {
 };
 
 export const FeatureGroupMap = {
-    Size: new FeatureGroupType('fg00', FeatureGroupTitle.SIZE, [ FeatureMap.Crop ])
+    Size: new FeatureGroupType('fg00', FeatureGroupTitle.SIZE, [ FeatureMap.Crop, FeatureMap.Flip ])
 };
 
 export const FeatureGroups = Object.values(FeatureGroupMap).map(fg => fg);

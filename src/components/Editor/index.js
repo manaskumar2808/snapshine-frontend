@@ -1,4 +1,4 @@
-import EditorComponent from '../EditorComponent';
+import EditorComponent from '../editors/EditorComponent';
 import { Container } from './styles';
 
 const Editor = ({ tool }) => { 

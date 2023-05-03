@@ -12,3 +12,9 @@ export const SET_RESIZE = 'SET_REIZE';
 export const SET_DRAG = 'SET_DRAG';
 
 export const SET_ZOOM = 'SET_ZOOM';
+
+export const SET_FLIP = 'SET_FLIP';
+export const FLIP_IMAGE = 'FLIP_IMAGE';
+
+export const SET_DEGREE = 'SET_DEGREE';
+export const ROTATE_IMAGE = 'ROTATE_IMAGE';

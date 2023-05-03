@@ -47,7 +47,7 @@ const Uploader = () => {
         const file = e.target.files[0];
         const src = URL.createObjectURL(file);
         const alt = file.name;
-        const path = file.path;
+        const path = file.pathname;
         const {height, width, naturalHeight, naturalWidth, aspectRatio} = await calculateProperties(file);
         setImageHandler({
             src, alt, path, height, width, naturalHeight, naturalWidth, aspectRatio

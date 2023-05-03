@@ -5,7 +5,7 @@ import { CropOptions, lockAspectRatio, updateCropWithAspectRatio } from '@/data/
 import { useDispatch, useSelector } from 'react-redux';
 import { cropImage, setCropOption, setCropParams } from '@/store/actions/crop';
 import { useCallback, useEffect, useState } from 'react';
-import IconComponent from '../IconComponent';
+import IconComponent from '../../IconComponent';
 
 const CropWorkComponent = () => { 
     const dispatch = useDispatch();
@@ -23,9 +23,9 @@ const CropWorkComponent = () => {
             console.log('crop', crop);
     }, [crop]);
 
-    const cropOptionClickHandler = (c) => {
-        dispatch(setCropOption(c));
-        dispatch(setCropParams(c.cropFunction(crop, image)));
+    const cropOptionClickHandler = (cropOption) => {
+        dispatch(setCropOption(cropOption));
+        dispatch(setCropParams(updateCropWithAspectRatio(crop, image, cropOption.aspectRatio, cropOption.shape)));
     }
 
     const applyCropHandler = () => { 
@@ -51,9 +51,9 @@ const CropWorkComponent = () => {
         <Container>
             <Grid>
                 {
-                    CropOptions.map(({ id, text, cropFunction }) => <CropOption
+                    CropOptions.map(({ id, text, aspectRatio, shape }) => <CropOption
                             key={id}
-                            onClick={() => cropOptionClickHandler({ id, text, cropFunction })}
+                            onClick={() => cropOptionClickHandler({ id, text, aspectRatio, shape })}
                             active={id === cropOption.id}
                         >
                             <CropContent>

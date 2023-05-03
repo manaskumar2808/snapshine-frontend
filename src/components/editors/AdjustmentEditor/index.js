@@ -1,5 +1,5 @@
 import { Container } from './styles';
-import FeatureGroup from '../FeatureGroup';
+import FeatureGroup from '../../FeatureGroup';
 import { FeatureGroupMap } from '@/data/feature-groups';
 
 const AdjustmentEditor = () => { 

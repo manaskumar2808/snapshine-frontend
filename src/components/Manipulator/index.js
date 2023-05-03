@@ -1,23 +1,21 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Photo, ResizeWrapper, Container, Display } from './styles';
 import React, { useState, useEffect } from 'react';
-import Wrapper from '../Wrapper';
+import Wrapper from '../wrappers/Wrapper';
 import { setImage } from '@/store/actions/image';
 import { setResize } from '@/store/actions/resize';
 import { setDrag } from '@/store/actions/drag';
-import ZoomWrapper from '../ZoomWrapper';
+import ZoomWrapper from '../wrappers/ZoomWrapper';
 import { setZoom } from '@/store/actions/zoom';
-import DragWrapper from '../DragWrapper';
+import DragWrapper from '../wrappers/DragWrapper';
 
 const Manipulator = () => { 
     const dispatch = useDispatch();
     const image = useSelector(({ img }) => img.image);
     const feature = useSelector(({ ftr }) => ftr.feature);
     const resize = useSelector(({ rsz }) => rsz.resize);
-    const drag = useSelector(({ drg }) => drg.drag);
 
     const [size, setSize] = useState({ width: image.width, height: image.height });
-    const [position, setPosition] = useState({ x: 0, y: 0 });
 
     const resizeHandler = (event, { size }) => {
         event.preventDefault();
@@ -44,6 +42,7 @@ const Manipulator = () => {
     }, [feature, dispatch]);
 
     useEffect(() => { 
+        console.log('image', image);
         if(image)
             setSize({
                 width: image.width,

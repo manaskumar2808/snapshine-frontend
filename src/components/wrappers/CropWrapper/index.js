@@ -30,8 +30,7 @@ const CropWrapper = ({ children }) => {
     useEffect(() => { 
         if (active)
             onCropComplete();
-        dispatch(cropImage(false));
-    }, [active, onCropComplete, dispatch]);
+    }, [active, onCropComplete]);
     
     const setCrop = (c) => { 
         dispatch(setCropParams(lockAspectRatio(c, crop, image, cropOption)));
@@ -83,8 +82,9 @@ const CropWrapper = ({ children }) => {
             height = DEFAULT_HEIGHT;
             width = aspectRatio * DEFAULT_HEIGHT;
         }
-        dispatch(setImage({ src, alt, height, width, aspectRatio, naturalHeight, naturalWidth }));
+        dispatch(setImage({ ...image, src, alt, height, width, aspectRatio, naturalHeight, naturalWidth }));
         dispatch(setActiveFeature(null));
+        dispatch(cropImage(false));
     }, [crop, image, dispatch]);
 
     return (

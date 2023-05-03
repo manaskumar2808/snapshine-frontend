@@ -4,6 +4,8 @@ import CropReducer from './crop';
 import ResizeReducer from './resize';
 import DragReducer from './drag';
 import ZoomReducer from './zoom';
+import FlipReducer from './flip';
+import RotateReducer from './rotate';
 
 const reducerMap = {
     img: ImageReducer,
@@ -12,6 +14,8 @@ const reducerMap = {
     rsz: ResizeReducer,
     drg: DragReducer,
     zum: ZoomReducer,
+    flp: FlipReducer,
+    rot: RotateReducer,
 };
 
 export default reducerMap;

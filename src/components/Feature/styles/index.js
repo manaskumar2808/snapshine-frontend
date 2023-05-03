@@ -1,6 +1,8 @@
 import styled from 'styled-components/macro';
 
-export const Container = styled.div``;
+export const Container = styled.div`
+    margin-bottom: 10px;
+`;
 
 export const Row = styled.div`
     cursor: pointer;

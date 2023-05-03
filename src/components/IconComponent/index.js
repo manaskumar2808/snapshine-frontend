@@ -1,4 +1,4 @@
-import { FiCrop, FiImage } from 'react-icons/fi';
+import { FiCrop, FiImage, FiRepeat } from 'react-icons/fi';
 import { FeatureMap } from '../../data/features';
 import { CropOptionMap } from '@/data/crop-options';
 import { ToolMap } from '@/data/tools';
@@ -8,6 +8,8 @@ const IconComponent = ({ id, ...props }) => {
     switch (id) {
         case FeatureMap.Crop.id:
             return <FiCrop {...props} />
+        case FeatureMap.Flip.id:
+            return <FiRepeat {...props} />
         case CropOptionMap.FreeForm.id:
             return <FiCrop {...props} />
         case CropOptionMap.OriginalRation.id:
