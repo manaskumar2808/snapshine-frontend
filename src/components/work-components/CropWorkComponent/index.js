@@ -1,11 +1,12 @@
 import { Container, CropContent, CropDimension, CropDimensionSection, CropOption, CropText, Grid } from './styles';
 import { useTheme } from 'styled-components';
 import { Button, Input } from '@/UI';
-import { CropOptions, lockAspectRatio, updateCropWithAspectRatio } from '@/data/crop-options';
+import { CropOptions } from '@/data/crop-options';
 import { useDispatch, useSelector } from 'react-redux';
 import { cropImage, setCropOption, setCropParams } from '@/store/actions/crop';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import IconComponent from '../../IconComponent';
+import { lockAspectRatio, updateCropWithAspectRatio } from '@/utilities/crop';
 
 const CropWorkComponent = () => { 
     const dispatch = useDispatch();
@@ -13,7 +14,7 @@ const CropWorkComponent = () => {
 
     const image = useSelector(({ img }) => img.image);
     const crop = useSelector(({ crp }) => crp.cropParams);
-    const cropOption = useSelector(({ crp }) => crp.cropOption);
+    const cropOptionId = useSelector(({ crp }) => crp.cropOptionId);
 
     const iconSize = 23;
     const iconColor = theme.colors.dark;
@@ -23,8 +24,9 @@ const CropWorkComponent = () => {
             console.log('crop', crop);
     }, [crop]);
 
-    const cropOptionClickHandler = (cropOption) => {
-        dispatch(setCropOption(cropOption));
+    const cropOptionClickHandler = (cropOptionId) => {
+        const cropOption = CropOptions.find(co => co.id === cropOptionId);
+        dispatch(setCropOption(cropOptionId));
         dispatch(setCropParams(updateCropWithAspectRatio(crop, image, cropOption.aspectRatio, cropOption.shape)));
     }
 
@@ -33,11 +35,13 @@ const CropWorkComponent = () => {
     }
 
     const heightChangeHandler = (height) => { 
+        const cropOption = CropOptions.find(co => co.id === cropOptionId);
         const h = height ? parseFloat(height) : 0;
         dispatch(setCropParams(lockAspectRatio({...crop, height: h}, crop, image, cropOption)));
     }
 
     const widthChangeHandler = (width) => { 
+        const cropOption = CropOptions.find(co => co.id === cropOptionId);
         const w = width ? parseFloat(width) : 0;
         dispatch(setCropParams(lockAspectRatio({...crop, width: w}, crop, image, cropOption)));
     }
@@ -51,10 +55,10 @@ const CropWorkComponent = () => {
         <Container>
             <Grid>
                 {
-                    CropOptions.map(({ id, text, aspectRatio, shape }) => <CropOption
+                    CropOptions.map(({ id, text }) => <CropOption
                             key={id}
-                            onClick={() => cropOptionClickHandler({ id, text, aspectRatio, shape })}
-                            active={id === cropOption.id}
+                            onClick={() => cropOptionClickHandler(id)}
+                            active={id === cropOptionId}
                         >
                             <CropContent>
                                 {<IconComponent id={id} size={iconSize} color={iconColor} />}

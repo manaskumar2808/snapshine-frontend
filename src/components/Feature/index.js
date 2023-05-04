@@ -7,7 +7,7 @@ import { setActiveFeature } from '@/store/actions/feature';
 import IconComponent from '../IconComponent';
 import WorkComponent from '../work-components/WorkComponent';
 
-const Feature = ({ id, title, featureOptions }) => { 
+const Feature = ({ id, title, featureOptionsId }) => { 
     const theme = useTheme();
     const dispatch = useDispatch();
 
@@ -27,7 +27,7 @@ const Feature = ({ id, title, featureOptions }) => {
         if (openFeature)
             dispatch(setActiveFeature(null));
         else
-            dispatch(setActiveFeature({id, title, featureOptions}))
+            dispatch(setActiveFeature({id, title, featureOptionsId}))
         setOpenFeature(state => !state);
     }
 

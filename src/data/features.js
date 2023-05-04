@@ -1,4 +1,5 @@
-import { FeatureOptions, FeatureType } from "@/types/FeatureType";
+import { FeatureType } from "@/types/FeatureType";
+import { FeatureOptionsMap } from "./feature-options";
 
 export const FeatureTitle = {
     CROP: 'Crop',
@@ -7,9 +8,9 @@ export const FeatureTitle = {
 };
 
 export const FeatureMap = {
-    Crop: new FeatureType('f00', FeatureTitle.CROP, new FeatureOptions(true, true)),
-    Flip: new FeatureType('f01', FeatureTitle.FLIP, new FeatureOptions(true, false)),
-    Rotate: new FeatureType('f02', FeatureTitle.ROTATE, new FeatureOptions(true, false)),
+    Crop: new FeatureType('f00', FeatureTitle.CROP, FeatureOptionsMap.Crop.id),
+    Flip: new FeatureType('f01', FeatureTitle.FLIP, FeatureOptionsMap.Flip.id),
+    Rotate: new FeatureType('f02', FeatureTitle.ROTATE, FeatureOptionsMap.Rotate.id),
 };
 
 export const Features = Object.values(FeatureMap).map(feature => feature);

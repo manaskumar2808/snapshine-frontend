@@ -5,7 +5,7 @@ import { setImage } from '@/store/actions/image';
 import { cropImage, setCropParams } from '@/store/actions/crop';
 import { DEFAULT_HEIGHT, DEFAULT_WIDTH } from '@/constants/Default';
 import { setActiveFeature } from '@/store/actions/feature';
-import { CropOptionMap, lockAspectRatio } from '@/data/crop-options';
+import { lockAspectRatio } from '@/utilities/crop';
 
 const CropWrapper = ({ children }) => { 
     const dispatch = useDispatch();

@@ -24,7 +24,7 @@ const RotateWorkComponent = () => {
     return (
         <Container>
             <RotateInputSection>
-                <Range value={degree} setValue={degreeHandler} defaultValue={0} minValue={-180} maxValue={180} />
+                <Range value={degree} setValue={degreeHandler} minValue={0} maxValue={360} step={90} />
             </RotateInputSection>
             <div style={{ height: 10 }} />
             <RotateInputSection>

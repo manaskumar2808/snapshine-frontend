@@ -8,6 +8,7 @@ import { setDrag } from '@/store/actions/drag';
 import ZoomWrapper from '../wrappers/ZoomWrapper';
 import { setZoom } from '@/store/actions/zoom';
 import DragWrapper from '../wrappers/DragWrapper';
+import { FeatureOptionsList } from '@/data/feature-options';
 
 const Manipulator = () => { 
     const dispatch = useDispatch();
@@ -32,9 +33,10 @@ const Manipulator = () => {
 
     useEffect(() => { 
         console.log('feature', feature);
-        if (feature && feature.featureOptions) {
-            dispatch(setDrag(!feature.featureOptions.lockDrag));
-            dispatch(setZoom(!feature.featureOptions.lockZoom));
+        if (feature && feature.featureOptionsId) {
+            const featureOptions = FeatureOptionsList.find(fo => fo.id === feature.featureOptionsId);
+            dispatch(setDrag(!featureOptions.lockDrag));
+            dispatch(setZoom(!featureOptions.lockZoom));
         } else {
             dispatch(setDrag(true));
             dispatch(setZoom(true));
@@ -60,8 +62,9 @@ const Manipulator = () => {
             document.removeEventListener("dragstart", handleDrag);
         };
     }, []);
+
     return (
-        <Container width={size.width} height={size.height}>
+        <Container width={image.width} height={image.height}>
             {/* <ResizeWrapper width={size.width} height={size.height} onResize={resizeHandler}> */}
                 <DragWrapper>
                     <Display>

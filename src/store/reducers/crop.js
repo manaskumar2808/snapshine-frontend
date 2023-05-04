@@ -3,7 +3,7 @@ import { CROP_IMAGE, SET_ACTIVE_CROP_OPTION, SET_CROP_PARAMS } from "../actions/
 const { CropOptionMap } = require("@/data/crop-options");
 
 const initialState = {
-    cropOption: CropOptionMap.FreeForm,
+    cropOptionId: CropOptionMap.FreeForm.id,
     cropParams: {
         x: 0,
         y: 0,
@@ -21,7 +21,7 @@ const reducer = (state = initialState, action) => {
         case SET_ACTIVE_CROP_OPTION:
             state = {
                 ...state,
-                cropOption: action.cropOption,
+                cropOptionId: action.cropOptionId,
             }
             break;
         case SET_CROP_PARAMS:

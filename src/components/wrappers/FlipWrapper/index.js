@@ -42,11 +42,7 @@ const FlipWrapper = ({ children }) => {
 
         const src = canvas.toDataURL("image/jpeg");
 
-        const naturalHeight = canvas.height;
-        const naturalWidth = canvas.width;
-        const aspectRatio = naturalWidth / naturalHeight;
-
-        dispatch(setImage({...image, src, naturalHeight, naturalWidth, aspectRatio}));
+        dispatch(setImage({...image, src}));
         dispatch(setActiveFeature(null));
         dispatch(flipImage(false));
     }, [flipX, flipY, image, dispatch]);

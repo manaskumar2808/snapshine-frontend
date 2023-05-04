@@ -14,9 +14,17 @@ const reducer = (state = initialState, action) => {
             }
             break;
         case ROTATE_IMAGE:
-            state = {
-                ...state,
-                active: action.active,
+            if (action.active) {
+                state = {
+                    ...state,
+                    active: true,
+                }
+            } else {
+                state = {
+                    ...state,
+                    active: false,
+                    degree: 0,
+                }
             }
             break;
         default:
