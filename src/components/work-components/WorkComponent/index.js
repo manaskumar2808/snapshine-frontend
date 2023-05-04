@@ -1,4 +1,5 @@
 import { FeatureMap } from '../../../data/features';
+import BasicAdjustWorkComponent from '../BasicAdjustWorkComponent';
 import CropWorkComponent from '../CropWorkComponent';
 import FlipWorkComponent from '../FlipWorkComponent';
 import RotateWorkComponent from '../RotateWorkComponent';
@@ -11,6 +12,8 @@ const WorkComponent = ({ id, ...props }) => {
             return <FlipWorkComponent {...props} />
         case FeatureMap.Rotate.id:
             return <RotateWorkComponent {...props} />
+        case FeatureMap.BasicAdjust.id:
+            return <BasicAdjustWorkComponent {...props} />
         default:
             break;
     }

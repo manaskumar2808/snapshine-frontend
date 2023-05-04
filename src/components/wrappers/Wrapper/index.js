@@ -4,6 +4,7 @@ import CropWrapper from "../CropWrapper";
 import { Container } from './styles';
 import FlipWrapper from "../FlipWrapper";
 import RotateWrapper from "../RotateWrapper";
+import BasicAdjustWrapper from "../BasicAdjustWrapper";
 
 const Wrapper = ({ children }) => { 
     const feature = useSelector(({ ftr }) => ftr.feature);
@@ -29,6 +30,12 @@ const Wrapper = ({ children }) => {
                 <RotateWrapper>
                     {children}
                 </RotateWrapper>
+            );
+        case FeatureMap.BasicAdjust.id:
+            return (
+                <BasicAdjustWrapper>
+                    {children}
+                </BasicAdjustWrapper>
             );
         default:
             break;

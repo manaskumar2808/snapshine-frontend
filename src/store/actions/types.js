@@ -18,3 +18,10 @@ export const FLIP_IMAGE = 'FLIP_IMAGE';
 
 export const SET_DEGREE = 'SET_DEGREE';
 export const ROTATE_IMAGE = 'ROTATE_IMAGE';
+
+export const SET_BRIGHTNESS = 'SET_BRIGHTNESS';
+export const SET_CONTRAST = 'SET_CONTRAST';
+export const SET_SATURATION = 'SET_SATURATION';
+export const SET_SHARPNESS = 'SET_SHARPNESS';
+export const SET_BLUR = 'SET_BLUR';
+export const BASIC_ADJUST_IMAGE = 'BASIC_ADJUST_IMAGE';

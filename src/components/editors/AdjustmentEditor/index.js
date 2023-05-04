@@ -1,20 +1,22 @@
 import { Container } from './styles';
 import FeatureGroup from '../../FeatureGroup';
-import { FeatureGroupMap } from '@/data/feature-groups';
+import { ToolMap } from '@/data/tools';
+import React from 'react';
 
 const AdjustmentEditor = () => { 
-    const featureGroups = [
-        FeatureGroupMap.Size
-    ];
+    const featureGroups = ToolMap.Adjustments.featureGroupList;
 
     return (
         <Container>
-            {featureGroups.map(({ id, title, featureList }) => <FeatureGroup
-                key={id}
-                id={id}
-                title={title}
-                featureList={featureList}
-            />)}
+            {featureGroups.map(({ id, title, featureList }) => <React.Fragment key={id}>
+                <FeatureGroup
+                    id={id}
+                    title={title}
+                    featureList={featureList}
+                />
+                <div style={{ height: 20 }} />
+            </React.Fragment>
+            )}
         </Container>
     );
 }
