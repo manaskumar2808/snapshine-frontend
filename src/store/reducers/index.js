@@ -7,6 +7,8 @@ import ZoomReducer from './zoom';
 import FlipReducer from './flip';
 import RotateReducer from './rotate';
 import BasicAdjustReducer from './basic-adjust';
+import ColorReducer from './color';
+import InvertReducer from './invert';
 
 const reducerMap = {
     img: ImageReducer,
@@ -18,6 +20,8 @@ const reducerMap = {
     flp: FlipReducer,
     rot: RotateReducer,
     bad: BasicAdjustReducer,
+    clr: ColorReducer,
+    ivt: InvertReducer,
 };
 
 export default reducerMap;

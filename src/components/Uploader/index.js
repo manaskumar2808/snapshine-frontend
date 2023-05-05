@@ -22,22 +22,23 @@ const Uploader = () => {
             const reader = new FileReader();
             reader.readAsDataURL(file);
             reader.onload = e => {
-            const image = new Image();
-            image.src = e.target.result;
-            image.onload = () => {
-                naturalHeight = image.naturalHeight;
-                naturalWidth = image.naturalWidth;
-                aspectRatio = naturalWidth / naturalHeight;
-                if (naturalWidth > naturalHeight) {
-                    height = DEFAULT_WIDTH / aspectRatio;
-                    width = DEFAULT_WIDTH;
-                } else {
-                    height = DEFAULT_HEIGHT;
-                    width = aspectRatio * DEFAULT_HEIGHT;
+                const image = new Image();
+                const src = reader.result;
+                image.src = e.target.result;
+                image.onload = () => {
+                    naturalHeight = image.naturalHeight;
+                    naturalWidth = image.naturalWidth;
+                    aspectRatio = naturalWidth / naturalHeight;
+                    if (naturalWidth > naturalHeight) {
+                        height = DEFAULT_WIDTH / aspectRatio;
+                        width = DEFAULT_WIDTH;
+                    } else {
+                        height = DEFAULT_HEIGHT;
+                        width = aspectRatio * DEFAULT_HEIGHT;
+                    }
+                    resolve({ src, height, width, naturalHeight, naturalWidth, aspectRatio });
                 }
-                resolve({ height, width, naturalHeight, naturalWidth, aspectRatio });
-            }
-            image.onerror = reject;
+                image.onerror = reject;
             }
             reader.onerror = reject;
         });
@@ -45,10 +46,10 @@ const Uploader = () => {
 
     const uploadHandler = async (e) => { 
         const file = e.target.files[0];
-        const src = URL.createObjectURL(file);
+        // const src = URL.createObjectURL(file);
         const alt = file.name;
         const path = file.pathname;
-        const {height, width, naturalHeight, naturalWidth, aspectRatio} = await calculateProperties(file);
+        const {src, height, width, naturalHeight, naturalWidth, aspectRatio} = await calculateProperties(file);
         setImageHandler({
             src, alt, path, height, width, naturalHeight, naturalWidth, aspectRatio
         });

@@ -1,5 +1,10 @@
+import { CropOptionMap } from "@/data/crop-options";
+
 export const updateCropWithAspectRatio = (crop, image, aspect, cropShape = "rectangle") => {
   let newCrop = { ...crop };
+
+  if (aspect === -2)
+    return newCrop;
 
   if (aspect === -1) {
     aspect = image.width / image.height;

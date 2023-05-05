@@ -5,6 +5,8 @@ import { Container } from './styles';
 import FlipWrapper from "../FlipWrapper";
 import RotateWrapper from "../RotateWrapper";
 import BasicAdjustWrapper from "../BasicAdjustWrapper";
+import ColorWrapper from "../ColorWrapper";
+import InvertWrapper from "../InvertWrapper";
 
 const Wrapper = ({ children }) => { 
     const feature = useSelector(({ ftr }) => ftr.feature);
@@ -36,6 +38,18 @@ const Wrapper = ({ children }) => {
                 <BasicAdjustWrapper>
                     {children}
                 </BasicAdjustWrapper>
+            );
+        case FeatureMap.Color.id:
+            return (
+                <ColorWrapper>
+                    {children}
+                </ColorWrapper>
+            );
+        case FeatureMap.Invert.id:
+            return (
+                <InvertWrapper>
+                    {children}
+                </InvertWrapper>
             );
         default:
             break;

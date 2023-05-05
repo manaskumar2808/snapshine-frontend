@@ -15,6 +15,7 @@ export const Column = styled.div`
 `;
 
 export const Row = styled.div`
+    height: 92vh;
     width: 100%;
     display: flex;
     flex-direction: row;

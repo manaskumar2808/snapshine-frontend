@@ -1,4 +1,4 @@
-import { Container } from './styles';
+import { Container, List } from './styles';
 import FeatureGroup from '../../FeatureGroup';
 import { ToolMap } from '@/data/tools';
 import React from 'react';
@@ -8,15 +8,17 @@ const AdjustmentEditor = () => {
 
     return (
         <Container>
-            {featureGroups.map(({ id, title, featureList }) => <React.Fragment key={id}>
-                <FeatureGroup
-                    id={id}
-                    title={title}
-                    featureList={featureList}
-                />
-                <div style={{ height: 20 }} />
-            </React.Fragment>
-            )}
+            <List>
+                {featureGroups.map(({ id, title, featureList }) => <React.Fragment key={id}>
+                    <FeatureGroup
+                        id={id}
+                        title={title}
+                        featureList={featureList}
+                    />
+                    <div style={{ height: 20 }} />
+                </React.Fragment>
+                )}
+            </List>
         </Container>
     );
 }

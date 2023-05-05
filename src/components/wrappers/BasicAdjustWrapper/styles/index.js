@@ -1,11 +1,14 @@
 import styled from "styled-components/macro";
 
 export const Container = styled.div`
-    filter: ${
-        ({ brightness, contrast, saturation, blur }) => `
-        brightness(${brightness}%) 
-        contrast(${contrast}%) 
-        saturate(${saturation}%) 
-        blur(${blur}px)`
-    };
+    & img {
+        filter: ${
+            ({ brightness, contrast, saturation, sharpness, blur }) => `
+            brightness(${brightness}%) 
+            contrast(${contrast}%) 
+            saturate(${saturation}%) 
+            drop-shadow(${sharpness}px 0px 0px)
+            blur(${blur}px)`
+        };
+    }
 `;

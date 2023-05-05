@@ -1,7 +1,7 @@
 import { CropOptionType } from '../types/CropOptionType';
 
 export const CropOptionMap = {
-    FreeForm: new CropOptionType('co00', 'Freeform', -1),
+    FreeForm: new CropOptionType('co00', 'Freeform', -2),
     Crop1x1: new CropOptionType('co01', '1 x 1', 1.0),
     Crop3x2: new CropOptionType('co02', '3 x 2', 3.0/2.0),
     Crop2x3: new CropOptionType('co03', '2 x 3', 2.0/3.0),

@@ -1,7 +1,9 @@
 import { FeatureMap } from '../../../data/features';
 import BasicAdjustWorkComponent from '../BasicAdjustWorkComponent';
+import ColorWorkComponent from '../ColorWorkComponent';
 import CropWorkComponent from '../CropWorkComponent';
 import FlipWorkComponent from '../FlipWorkComponent';
+import InvertWorkComponent from '../InvertWorkComponent';
 import RotateWorkComponent from '../RotateWorkComponent';
 
 const WorkComponent = ({ id, ...props }) => {
@@ -14,6 +16,10 @@ const WorkComponent = ({ id, ...props }) => {
             return <RotateWorkComponent {...props} />
         case FeatureMap.BasicAdjust.id:
             return <BasicAdjustWorkComponent {...props} />
+        case FeatureMap.Color.id:
+            return <ColorWorkComponent {...props} />
+        case FeatureMap.Invert.id:
+            return <InvertWorkComponent {...props} />
         default:
             break;
     }

@@ -9,6 +9,7 @@ import ZoomWrapper from '../wrappers/ZoomWrapper';
 import { setZoom } from '@/store/actions/zoom';
 import DragWrapper from '../wrappers/DragWrapper';
 import { FeatureOptionsList } from '@/data/feature-options';
+import { PHOTO_ID } from '@/constants/Document';
 
 const Manipulator = () => { 
     const dispatch = useDispatch();
@@ -70,7 +71,7 @@ const Manipulator = () => {
                     <Display>
                         <Wrapper>
                             <ZoomWrapper>
-                                <Photo src={image.src} alt={image.alt} />
+                                <Photo id={PHOTO_ID} src={image.src} alt={image.alt} />
                             </ZoomWrapper>
                         </Wrapper>
                     </Display>

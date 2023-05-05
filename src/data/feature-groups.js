@@ -8,7 +8,7 @@ export const FeatureGroupTitle = {
 
 export const FeatureGroupMap = {
     Size: new FeatureGroupType('fg00', FeatureGroupTitle.SIZE, [FeatureMap.Crop, FeatureMap.Flip, FeatureMap.Rotate]),
-    BrightnessAndColor: new FeatureGroupType('fg01', FeatureGroupTitle.BRIGHTNESS_AND_COLOR, [ FeatureMap.BasicAdjust ]),
+    BrightnessAndColor: new FeatureGroupType('fg01', FeatureGroupTitle.BRIGHTNESS_AND_COLOR, [ FeatureMap.BasicAdjust, FeatureMap.Color, FeatureMap.Invert ]),
 };
 
 export const FeatureGroups = Object.values(FeatureGroupMap).map(fg => fg);

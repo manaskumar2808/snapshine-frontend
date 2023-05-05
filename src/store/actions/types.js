@@ -25,3 +25,10 @@ export const SET_SATURATION = 'SET_SATURATION';
 export const SET_SHARPNESS = 'SET_SHARPNESS';
 export const SET_BLUR = 'SET_BLUR';
 export const BASIC_ADJUST_IMAGE = 'BASIC_ADJUST_IMAGE';
+
+export const SET_TEMPERATURE = 'SET_TEMPERATURE';
+export const SET_TINT = 'SET_TINT';
+export const COLOR_IMAGE = 'COLOR_IMAGE';
+
+export const SET_INVERT = 'SET_INVERT';
+export const INVERT_IMAGE = 'INVERT_IMAGE';

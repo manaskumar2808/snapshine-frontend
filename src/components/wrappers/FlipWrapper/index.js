@@ -4,6 +4,7 @@ import { useCallback, useEffect } from 'react';
 import { flipImage } from '@/store/actions/flip';
 import { setImage } from '@/store/actions/image';
 import { setActiveFeature } from '@/store/actions/feature';
+import { PHOTO_ID } from '@/constants/Document';
 
 const FlipWrapper = ({ children }) => {
     const dispatch = useDispatch();
@@ -20,14 +21,13 @@ const FlipWrapper = ({ children }) => {
 
     const onFlipComplete = useCallback(() => {
         const canvas = document.createElement("canvas");
-        const imageElement = document.createElement("img");
+        const imageElement = document.getElementById(PHOTO_ID);
 
-        imageElement.src = image.src;
-        imageElement.height = image.height;
-        imageElement.width = image.width;
+        const scaleX = image.naturalWidth / image.width;
+        const scaleY = image.naturalHeight / image.height;
 
-        canvas.width = image.width;
-        canvas.height = image.height;
+        canvas.width = image.width * scaleX;
+        canvas.height = image.height * scaleY;
         const ctx = canvas.getContext("2d");
 
         if (flipX) {
@@ -38,7 +38,15 @@ const FlipWrapper = ({ children }) => {
             ctx.scale(1, -1);
         }
 
-        ctx.drawImage(imageElement, flipX ? image.width * -1 : 0, flipY ? image.height * -1 : 0, image.width, image.height);
+        const { width: canvasWidth, height: canvasHeight } = canvas;
+
+        ctx.drawImage(
+            imageElement,
+            flipX ? canvasWidth * -1 : 0,
+            flipY ? canvasHeight * -1 : 0,
+            canvasWidth,
+            canvasHeight
+        );
 
         const src = canvas.toDataURL("image/jpeg");
 

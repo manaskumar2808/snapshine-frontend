@@ -6,13 +6,15 @@ import { cropImage, setCropParams } from '@/store/actions/crop';
 import { DEFAULT_HEIGHT, DEFAULT_WIDTH } from '@/constants/Default';
 import { setActiveFeature } from '@/store/actions/feature';
 import { lockAspectRatio } from '@/utilities/crop';
+import { CropOptions } from '@/data/crop-options';
+import { PHOTO_ID } from '@/constants/Document';
 
 const CropWrapper = ({ children }) => { 
     const dispatch = useDispatch();
     const image = useSelector(({ img }) => img.image);
     const active = useSelector(({ crp }) => crp.active);
     const crop = useSelector(({ crp }) => crp.cropParams);
-    const cropOption = useSelector(({ crp }) => crp.cropOption);
+    const cropOptionId = useSelector(({ crp }) => crp.cropOptionId);
 
     useEffect(() => { 
         if (image) {
@@ -33,12 +35,14 @@ const CropWrapper = ({ children }) => {
     }, [active, onCropComplete]);
     
     const setCrop = (c) => { 
+        const cropOption = CropOptions.find(co => co.id === cropOptionId);
         dispatch(setCropParams(lockAspectRatio(c, crop, image, cropOption)));
     }
 
     const onCropComplete = useCallback(() => {
         const canvas = document.createElement('canvas');
-        const imageElement = document.createElement("img");
+        const imageElement = document.getElementById(PHOTO_ID);
+
         const scaleX = image.naturalWidth / image.width;
         const scaleY = image.naturalHeight / image.height;
         const cropWidth = crop.width * scaleX;
@@ -48,8 +52,6 @@ const CropWrapper = ({ children }) => {
         canvas.width = cropWidth
         canvas.height = cropHeight;
         const ctx = canvas.getContext('2d');
-
-        imageElement.src = image.src;
     
         const pixelRatio = window.devicePixelRatio;
         canvas.width = cropWidth * pixelRatio;
@@ -71,17 +73,27 @@ const CropWrapper = ({ children }) => {
 
         const src = canvas.toDataURL("image/jpeg");
         const alt = image.alt;
-        const naturalHeight = canvas.height;
-        const naturalWidth = canvas.width;
-        const aspectRatio = naturalWidth / naturalHeight;
+        const aspectRatio = canvas.width / canvas.height;
+        
         let height, width;
-        if (naturalWidth > naturalHeight) {
+        if (canvas.width > canvas.height) {
             height = DEFAULT_WIDTH / aspectRatio;
             width = DEFAULT_WIDTH;
         } else {
             height = DEFAULT_HEIGHT;
             width = aspectRatio * DEFAULT_HEIGHT;
         }
+        
+        let naturalHeight = image.naturalHeight;
+        let naturalWidth = image.naturalWidth;
+        let naturalAspectRatio = naturalWidth / naturalHeight;
+        
+        if (aspectRatio > naturalAspectRatio) {
+            naturalHeight = naturalWidth / aspectRatio;
+        } else {
+            naturalWidth = aspectRatio * naturalHeight;
+        }
+
         dispatch(setImage({ ...image, src, alt, height, width, aspectRatio, naturalHeight, naturalWidth }));
         dispatch(setActiveFeature(null));
         dispatch(cropImage(false));
