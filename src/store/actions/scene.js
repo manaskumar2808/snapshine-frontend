@@ -14,6 +14,6 @@ export const sceneImage = (active) => {
         dispatch({
             type: SCENE_IMAGE,
             active,
-        })
+        });
     }
 }

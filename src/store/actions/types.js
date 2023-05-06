@@ -35,3 +35,6 @@ export const INVERT_IMAGE = 'INVERT_IMAGE';
 
 export const SET_SCENE_EFFECT = 'SET_SCENE_EFFECT';
 export const SCENE_IMAGE = 'SCENE_IMAGE';
+
+export const SET_CLASSIC_EFFECT = 'SET_CLASSIC_EFFECT';
+export const CLASSIC_IMAGE = 'CLASSIC_IMAGE';

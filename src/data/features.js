@@ -9,6 +9,7 @@ export const FeatureTitle = {
     COLOR: 'Color',
     INVERT: 'Invert',
     SCENES: 'Scenes',
+    CLASSIC: 'Classic',
 };
 
 export const FeatureMap = {
@@ -19,6 +20,7 @@ export const FeatureMap = {
     Color: new FeatureType('f04', FeatureTitle.COLOR, FeatureOptionsMap.Color.id),
     Invert: new FeatureType('f05', FeatureTitle.INVERT, FeatureOptionsMap.Invert.id),
     Scenes: new FeatureType('f06', FeatureTitle.SCENES, FeatureOptionsMap.Scenes.id),
+    Classic: new FeatureType('f07', FeatureTitle.CLASSIC, FeatureOptionsMap.Classic.id),
 };
 
 export const Features = Object.values(FeatureMap).map(feature => feature);

@@ -8,6 +8,7 @@ import BasicAdjustWrapper from "../BasicAdjustWrapper";
 import ColorWrapper from "../ColorWrapper";
 import InvertWrapper from "../InvertWrapper";
 import SceneWrapper from "../SceneWrapper";
+import ClassicWrapper from "../ClassicWrapper";
 
 const Wrapper = ({ children }) => { 
     const feature = useSelector(({ ftr }) => ftr.feature);
@@ -57,6 +58,12 @@ const Wrapper = ({ children }) => {
                 <SceneWrapper>
                     {children}
                 </SceneWrapper>
+            );
+        case FeatureMap.Classic.id:
+            return (
+                <ClassicWrapper>
+                    {children}
+                </ClassicWrapper>
             );
         default:
             break;

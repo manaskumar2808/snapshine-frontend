@@ -1,5 +1,6 @@
 import { FeatureMap } from '../../../data/features';
 import BasicAdjustWorkComponent from '../BasicAdjustWorkComponent';
+import ClassicWorkComponent from '../ClassicWorkComponent';
 import ColorWorkComponent from '../ColorWorkComponent';
 import CropWorkComponent from '../CropWorkComponent';
 import FlipWorkComponent from '../FlipWorkComponent';
@@ -23,6 +24,8 @@ const WorkComponent = ({ id, ...props }) => {
             return <InvertWorkComponent {...props} />
         case FeatureMap.Scenes.id:
             return <SceneWorkComponent {...props} />
+        case FeatureMap.Classic.id:
+            return <ClassicWorkComponent {...props} />
         default:
             break;
     }

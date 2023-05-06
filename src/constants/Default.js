@@ -12,6 +12,8 @@ export const DEFAULT_TINT = 0;
 
 export const DEFAULT_OPACITY = 100;
 
+export const DEFAULT_GRAYSCALE = 0;
+
 export const DEFAULT_PROPERTIES = {
     brightness: DEFAULT_BRIGHTNESS,
     contrast: DEFAULT_CONTRAST,
@@ -21,4 +23,5 @@ export const DEFAULT_PROPERTIES = {
     temperature: DEFAULT_TEMPERATURE,
     tint: DEFAULT_TINT,
     opacity: DEFAULT_OPACITY,
+    grayscale: DEFAULT_GRAYSCALE,
 }

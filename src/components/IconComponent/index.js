@@ -6,7 +6,7 @@ import { HiOutlineAdjustments } from 'react-icons/hi';
 import { TbColorFilter } from 'react-icons/tb';
 import { IoInvertMode, IoFlask } from 'react-icons/io5';
 import ThemeComponent from '../ThemeComponent';
-import { SCENES } from '@/constants/Link';
+import { CLASSIC, SCENES } from '@/constants/Link';
 
 const IconComponent = ({ id, ...props }) => { 
     const themeSize = 40;
@@ -26,6 +26,8 @@ const IconComponent = ({ id, ...props }) => {
             return <IoInvertMode {...props} />
         case FeatureMap.Scenes.id:
             return <ThemeComponent src={SCENES.SRC} alt={SCENES.ALT} size={themeSize} />
+        case FeatureMap.Classic.id:
+            return <ThemeComponent src={CLASSIC.SRC} alt={CLASSIC.ALT} size={themeSize} />
         case CropOptionMap.FreeForm.id:
             return <FiCrop {...props} />
         case CropOptionMap.OriginalRation.id:

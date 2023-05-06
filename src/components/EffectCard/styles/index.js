@@ -29,6 +29,7 @@ export const Photo = styled.img`
         sepia(${properties.tint}%)
         hue-rotate(${properties.temperature}deg)
         opacity(${properties.opacity}%)
+        grayscale(${properties.grayscale}%)
     `};
 `;
 
