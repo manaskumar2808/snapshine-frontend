@@ -9,10 +9,10 @@ const Icon = ({ id, active, text, toolClickHandler }) => {
         <Container onClick={toolClickHandler} active={active}>
             <Display>
                 <IconComponent id={id} size={25} color={theme.colors.dark} />
+                {text && text.trim().length && <Text>
+                    {text}
+                </Text>}
             </Display>
-            {text && text.trim().length && <Text>
-                {text}
-            </Text>}
         </Container>
     );
 }

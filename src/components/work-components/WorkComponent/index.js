@@ -5,6 +5,7 @@ import CropWorkComponent from '../CropWorkComponent';
 import FlipWorkComponent from '../FlipWorkComponent';
 import InvertWorkComponent from '../InvertWorkComponent';
 import RotateWorkComponent from '../RotateWorkComponent';
+import SceneWorkComponent from '../SceneWorkComponent';
 
 const WorkComponent = ({ id, ...props }) => {
     switch (id) {
@@ -20,6 +21,8 @@ const WorkComponent = ({ id, ...props }) => {
             return <ColorWorkComponent {...props} />
         case FeatureMap.Invert.id:
             return <InvertWorkComponent {...props} />
+        case FeatureMap.Scenes.id:
+            return <SceneWorkComponent {...props} />
         default:
             break;
     }

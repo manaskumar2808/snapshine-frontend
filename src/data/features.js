@@ -8,6 +8,7 @@ export const FeatureTitle = {
     BASIC_ADJUST: 'Basic Adjust',
     COLOR: 'Color',
     INVERT: 'Invert',
+    SCENES: 'Scenes',
 };
 
 export const FeatureMap = {
@@ -17,6 +18,7 @@ export const FeatureMap = {
     BasicAdjust: new FeatureType('f03', FeatureTitle.BASIC_ADJUST, FeatureOptionsMap.BasicAdjust.id),
     Color: new FeatureType('f04', FeatureTitle.COLOR, FeatureOptionsMap.Color.id),
     Invert: new FeatureType('f05', FeatureTitle.INVERT, FeatureOptionsMap.Invert.id),
+    Scenes: new FeatureType('f06', FeatureTitle.SCENES, FeatureOptionsMap.Scenes.id),
 };
 
 export const Features = Object.values(FeatureMap).map(feature => feature);

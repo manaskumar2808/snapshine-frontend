@@ -15,5 +15,6 @@ export const Display = styled.div``;
 
 export const Text = styled.p`
     font-size: 13px;
-    color: ${({theme}) => theme.colors.dark};
+    color: ${({ theme }) => theme.colors.dark};
+    margin: 0;
 `;

@@ -9,3 +9,16 @@ export const DEFAULT_BLUR = 0;
 
 export const DEFAULT_TEMPERATURE = 0;
 export const DEFAULT_TINT = 0;
+
+export const DEFAULT_OPACITY = 100;
+
+export const DEFAULT_PROPERTIES = {
+    brightness: DEFAULT_BRIGHTNESS,
+    contrast: DEFAULT_CONTRAST,
+    saturation: DEFAULT_SATURATION,
+    sharpness: DEFAULT_SHARPNESS,
+    blur: DEFAULT_BLUR,
+    temperature: DEFAULT_TEMPERATURE,
+    tint: DEFAULT_TINT,
+    opacity: DEFAULT_OPACITY,
+}

@@ -32,3 +32,6 @@ export const COLOR_IMAGE = 'COLOR_IMAGE';
 
 export const SET_INVERT = 'SET_INVERT';
 export const INVERT_IMAGE = 'INVERT_IMAGE';
+
+export const SET_SCENE_EFFECT = 'SET_SCENE_EFFECT';
+export const SCENE_IMAGE = 'SCENE_IMAGE';

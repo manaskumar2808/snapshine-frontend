@@ -7,6 +7,7 @@ import RotateWrapper from "../RotateWrapper";
 import BasicAdjustWrapper from "../BasicAdjustWrapper";
 import ColorWrapper from "../ColorWrapper";
 import InvertWrapper from "../InvertWrapper";
+import SceneWrapper from "../SceneWrapper";
 
 const Wrapper = ({ children }) => { 
     const feature = useSelector(({ ftr }) => ftr.feature);
@@ -50,6 +51,12 @@ const Wrapper = ({ children }) => {
                 <InvertWrapper>
                     {children}
                 </InvertWrapper>
+            );
+        case FeatureMap.Scenes.id:
+            return (
+                <SceneWrapper>
+                    {children}
+                </SceneWrapper>
             );
         default:
             break;

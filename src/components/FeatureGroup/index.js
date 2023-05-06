@@ -1,7 +1,7 @@
 import Feature from '../Feature';
 import { Container, List, Title } from './styles';
 
-const FeatureGroup = ({ id, featureList = [], title }) => { 
+const FeatureGroup = ({ id, title, featureList = [] }) => { 
     return (
         <Container>
             <Title>{title}</Title>

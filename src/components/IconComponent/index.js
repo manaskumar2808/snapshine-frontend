@@ -4,9 +4,13 @@ import { CropOptionMap } from '@/data/crop-options';
 import { ToolMap } from '@/data/tools';
 import { HiOutlineAdjustments } from 'react-icons/hi';
 import { TbColorFilter } from 'react-icons/tb';
-import { IoInvertMode } from 'react-icons/io5';
+import { IoInvertMode, IoFlask } from 'react-icons/io5';
+import ThemeComponent from '../ThemeComponent';
+import { SCENES } from '@/constants/Link';
 
 const IconComponent = ({ id, ...props }) => { 
+    const themeSize = 40;
+
     switch (id) {
         case FeatureMap.Crop.id:
             return <FiCrop {...props} />
@@ -20,12 +24,16 @@ const IconComponent = ({ id, ...props }) => {
             return <TbColorFilter {...props} />
         case FeatureMap.Invert.id:
             return <IoInvertMode {...props} />
+        case FeatureMap.Scenes.id:
+            return <ThemeComponent src={SCENES.SRC} alt={SCENES.ALT} size={themeSize} />
         case CropOptionMap.FreeForm.id:
             return <FiCrop {...props} />
         case CropOptionMap.OriginalRation.id:
             return <FiImage {...props} />
         case ToolMap.Adjustments.id:
             return <HiOutlineAdjustments {...props} />
+        case ToolMap.Effects.id:
+            return <IoFlask {...props} />
         default:
             break;
     }

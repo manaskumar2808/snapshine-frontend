@@ -18,3 +18,6 @@ export const MIN_TEMPERATURE = 0;
 
 export const MAX_TINT = 180;
 export const MIN_TINT = 0;
+
+export const MAX_OPACITY = 100;
+export const MIN_OPACITY = 0;
