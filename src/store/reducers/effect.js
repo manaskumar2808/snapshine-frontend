@@ -1,19 +1,19 @@
-import { CLASSIC_IMAGE, SET_CLASSIC_EFFECT } from "../actions/types";
+import { EFFECT_IMAGE, SET_EFFECT } from '../actions/types';
 
 const initialState = {
-    classicEffectId: null,
+    effectId: null,
     active: false,
 }
 
-const reducer = (state = initialState, action) => {
+const reducer = (state = initialState, action) => { 
     switch (action.type) {
-        case SET_CLASSIC_EFFECT:
+        case SET_EFFECT:
             state = {
                 ...state,
-                classicEffectId: action.classicEffectId,
+                effectId: action.effectId,
             }
             break;
-        case CLASSIC_IMAGE:
+        case EFFECT_IMAGE:
             state = {
                 ...state,
                 active: action.active,

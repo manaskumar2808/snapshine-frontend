@@ -33,8 +33,14 @@ export const COLOR_IMAGE = 'COLOR_IMAGE';
 export const SET_INVERT = 'SET_INVERT';
 export const INVERT_IMAGE = 'INVERT_IMAGE';
 
+export const SET_EFFECT = 'SET_EFFECT';
+export const EFFECT_IMAGE = 'EFFECT_IMAGE';
+
 export const SET_SCENE_EFFECT = 'SET_SCENE_EFFECT';
 export const SCENE_IMAGE = 'SCENE_IMAGE';
 
 export const SET_CLASSIC_EFFECT = 'SET_CLASSIC_EFFECT';
 export const CLASSIC_IMAGE = 'CLASSIC_IMAGE';
+
+export const SET_RETRO_EFFECT = 'SET_RETRO_EFFECT';
+export const RETRO_IMAGE = 'RETRO_IMAGE';

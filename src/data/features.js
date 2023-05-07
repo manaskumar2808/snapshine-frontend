@@ -10,6 +10,8 @@ export const FeatureTitle = {
     INVERT: 'Invert',
     SCENES: 'Scenes',
     CLASSIC: 'Classic',
+    RETRO: 'Retro',
+    GRAYSCALE: 'Grayscale',
 };
 
 export const FeatureMap = {
@@ -21,6 +23,8 @@ export const FeatureMap = {
     Invert: new FeatureType('f05', FeatureTitle.INVERT, FeatureOptionsMap.Invert.id),
     Scenes: new FeatureType('f06', FeatureTitle.SCENES, FeatureOptionsMap.Scenes.id),
     Classic: new FeatureType('f07', FeatureTitle.CLASSIC, FeatureOptionsMap.Classic.id),
+    Retro: new FeatureType('f08', FeatureTitle.RETRO, FeatureOptionsMap.Retro.id),
+    Grayscale: new FeatureType('f09', FeatureTitle.GRAYSCALE, FeatureOptionsMap.Grayscale.id),
 };
 
 export const Features = Object.values(FeatureMap).map(feature => feature);

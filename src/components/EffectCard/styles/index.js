@@ -24,7 +24,7 @@ export const Photo = styled.img`
         brightness(${properties.brightness}%)
         contrast(${properties.contrast}%)
         saturate(${properties.saturation}%)
-        drop-shadow(${properties.sharpness}px 0px 0px)
+        drop-shadow(${properties.sharpness}px ${properties.sharpnessY}px ${properties.blurRadius}px ${properties.shadowColor})
         blur(${properties.blur}px)
         sepia(${properties.tint}%)
         hue-rotate(${properties.temperature}deg)

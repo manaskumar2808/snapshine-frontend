@@ -14,6 +14,10 @@ export const DEFAULT_OPACITY = 100;
 
 export const DEFAULT_GRAYSCALE = 0;
 
+export const DEFAULT_SHARPNESS_Y = 0;
+export const DEFAULT_BLUR_RADIUS = 0;
+export const DEFAULT_SHADOW_COLOR = 'black';
+
 export const DEFAULT_PROPERTIES = {
     brightness: DEFAULT_BRIGHTNESS,
     contrast: DEFAULT_CONTRAST,
@@ -24,4 +28,7 @@ export const DEFAULT_PROPERTIES = {
     tint: DEFAULT_TINT,
     opacity: DEFAULT_OPACITY,
     grayscale: DEFAULT_GRAYSCALE,
+    sharpnessY: DEFAULT_SHARPNESS_Y,
+    blurRadius: DEFAULT_BLUR_RADIUS,
+    shadowColor: DEFAULT_SHADOW_COLOR,
 }

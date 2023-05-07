@@ -1,12 +1,12 @@
 import { FeatureMap } from '../../../data/features';
 import BasicAdjustWorkComponent from '../BasicAdjustWorkComponent';
-import ClassicWorkComponent from '../ClassicWorkComponent';
 import ColorWorkComponent from '../ColorWorkComponent';
 import CropWorkComponent from '../CropWorkComponent';
+import EffectWorkComponent from '../EffectWorkComponent';
 import FlipWorkComponent from '../FlipWorkComponent';
 import InvertWorkComponent from '../InvertWorkComponent';
 import RotateWorkComponent from '../RotateWorkComponent';
-import SceneWorkComponent from '../SceneWorkComponent';
+
 
 const WorkComponent = ({ id, ...props }) => {
     switch (id) {
@@ -23,9 +23,13 @@ const WorkComponent = ({ id, ...props }) => {
         case FeatureMap.Invert.id:
             return <InvertWorkComponent {...props} />
         case FeatureMap.Scenes.id:
-            return <SceneWorkComponent {...props} />
+            return <EffectWorkComponent featureId={FeatureMap.Scenes.id} {...props} />
         case FeatureMap.Classic.id:
-            return <ClassicWorkComponent {...props} />
+            return <EffectWorkComponent featureId={FeatureMap.Classic.id} {...props} />
+        case FeatureMap.Retro.id:
+            return <EffectWorkComponent featureId={FeatureMap.Retro.id} {...props} />
+        case FeatureMap.Grayscale.id:
+            return <EffectWorkComponent featureId={FeatureMap.Grayscale.id} {...props} />
         default:
             break;
     }

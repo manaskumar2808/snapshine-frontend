@@ -4,33 +4,33 @@ import { useCallback, useEffect, useState } from 'react';
 import { PHOTO_ID } from '@/constants/Document';
 import { Effects } from '@/data/effects';
 import { EffectPropertiesList } from '@/data/effect-properties';
-import { sceneImage } from '@/store/actions/scene';
 import { DEFAULT_PROPERTIES } from '@/constants/Default';
 import { setImage } from '@/store/actions/image';
 import { setActiveFeature } from '@/store/actions/feature';
+import { effectImage } from '@/store/actions/effect';
 
-const SceneWrapper = ({ children }) => { 
+const EffectWrapper = ({ children }) => { 
     const dispatch = useDispatch();
 
     const image = useSelector(({ img }) => img.image);
-    const sceneEffectId = useSelector(({ scn }) => scn.sceneEffectId);
-    const active = useSelector(({ scn }) => scn.active);
+    const effectId = useSelector(({ eft }) => eft.effectId);
+    const active = useSelector(({ eft }) => eft.active);
 
     const [properties, setProperties] = useState(DEFAULT_PROPERTIES);
 
     useEffect(() => { 
         if (active)
-            onSceneComplete();
-    }, [active, onSceneComplete]);
+            onComplete();
+    }, [active, onComplete]);
 
     useEffect(() => { 
-        const effect = Effects.find(e => e.id === sceneEffectId);
+        const effect = Effects.find(e => e.id === effectId);
         const effectPropertiesId = effect ? effect.effectPropertiesId : null;
         const effectProperties = EffectPropertiesList.find(ep => ep.id === effectPropertiesId);
         setProperties(effectProperties || DEFAULT_PROPERTIES);
-    }, [sceneEffectId]);
+    }, [effectId]);
     
-    const onSceneComplete = useCallback(() => {
+    const onComplete = useCallback(() => {
         const canvas = document.createElement("canvas");
         const imageElement = document.getElementById(PHOTO_ID);
 
@@ -45,11 +45,12 @@ const SceneWrapper = ({ children }) => {
             brightness(${properties.brightness}%)
             contrast(${properties.contrast}%)
             saturate(${properties.saturation}%)
-            drop-shadow(${properties.sharpness}px 0px 0px)
+            drop-shadow(${properties.sharpness}px ${properties.sharpnessY}px ${properties.blurRadius}px ${properties.shadowColor})
             blur(${properties.blur}px)
             sepia(${properties.tint}%)
             hue-rotate(${properties.temperature}deg)
             opacity(${properties.opacity}%)
+            grayscale(${properties.grayscale}%)
         `;
 
         ctx.drawImage(imageElement, 0, 0, canvas.width, canvas.height);
@@ -58,7 +59,7 @@ const SceneWrapper = ({ children }) => {
 
         dispatch(setImage({...image, src }));
         dispatch(setActiveFeature(null));
-        dispatch(sceneImage(false));
+        dispatch(effectImage(false));
     }, [properties, image, dispatch]);
 
     return (
@@ -68,4 +69,4 @@ const SceneWrapper = ({ children }) => {
     );
 }
 
-export default SceneWrapper;
+export default EffectWrapper;

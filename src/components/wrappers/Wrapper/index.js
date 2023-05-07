@@ -7,8 +7,7 @@ import RotateWrapper from "../RotateWrapper";
 import BasicAdjustWrapper from "../BasicAdjustWrapper";
 import ColorWrapper from "../ColorWrapper";
 import InvertWrapper from "../InvertWrapper";
-import SceneWrapper from "../SceneWrapper";
-import ClassicWrapper from "../ClassicWrapper";
+import EffectWrapper from "../EffectWrapper";
 
 const Wrapper = ({ children }) => { 
     const feature = useSelector(({ ftr }) => ftr.feature);
@@ -55,15 +54,27 @@ const Wrapper = ({ children }) => {
             );
         case FeatureMap.Scenes.id:
             return (
-                <SceneWrapper>
+                <EffectWrapper>
                     {children}
-                </SceneWrapper>
+                </EffectWrapper>
             );
         case FeatureMap.Classic.id:
             return (
-                <ClassicWrapper>
+                <EffectWrapper>
                     {children}
-                </ClassicWrapper>
+                </EffectWrapper>
+            );
+        case FeatureMap.Retro.id:
+            return (
+                <EffectWrapper>
+                    {children}
+                </EffectWrapper>
+            );
+        case FeatureMap.Grayscale.id:
+            return (
+                <EffectWrapper>
+                    {children}
+                </EffectWrapper>
             );
         default:
             break;
