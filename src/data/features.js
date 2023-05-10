@@ -12,6 +12,7 @@ export const FeatureTitle = {
     CLASSIC: 'Classic',
     RETRO: 'Retro',
     GRAYSCALE: 'Grayscale',
+    LAYOUT: 'Layout',
 };
 
 export const FeatureMap = {
@@ -25,6 +26,7 @@ export const FeatureMap = {
     Classic: new FeatureType('f07', FeatureTitle.CLASSIC, FeatureOptionsMap.Classic.id),
     Retro: new FeatureType('f08', FeatureTitle.RETRO, FeatureOptionsMap.Retro.id),
     Grayscale: new FeatureType('f09', FeatureTitle.GRAYSCALE, FeatureOptionsMap.Grayscale.id),
+    Layout: new FeatureType('f10', FeatureTitle.LAYOUT, FeatureOptionsMap.Layout.id),
 };
 
 export const Features = Object.values(FeatureMap).map(feature => feature);

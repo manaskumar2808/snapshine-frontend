@@ -10,6 +10,7 @@ import BasicAdjustReducer from './basic-adjust';
 import ColorReducer from './color';
 import InvertReducer from './invert';
 import EffectReducer from './effect';
+import LayoutReducer from './layout';
 
 const reducerMap = {
     img: ImageReducer,
@@ -24,6 +25,7 @@ const reducerMap = {
     clr: ColorReducer,
     ivt: InvertReducer,
     eft: EffectReducer,
+    lyt: LayoutReducer,
 };
 
 export default reducerMap;

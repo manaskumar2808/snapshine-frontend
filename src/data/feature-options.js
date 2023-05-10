@@ -11,6 +11,7 @@ export const FeatureOptionsMap = {
     Classic: new FeatureOptions('fo07', false, false),
     Retro: new FeatureOptions('fo08', false, false),
     Grayscale: new FeatureOptions('fo09', false, false),
+    Layout: new FeatureOptions('fo10', false, true),
 }
 
 export const FeatureOptionsList = Object.values(FeatureOptionsMap).map(featureOptions => featureOptions);

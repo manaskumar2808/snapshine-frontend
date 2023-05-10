@@ -11,3 +11,9 @@ export const Container = styled.div`
     width: 300px;
     box-sizing: border-box;
 `;
+
+export const List = styled.div`
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+`;

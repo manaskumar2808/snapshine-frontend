@@ -6,7 +6,7 @@ import EffectWorkComponent from '../EffectWorkComponent';
 import FlipWorkComponent from '../FlipWorkComponent';
 import InvertWorkComponent from '../InvertWorkComponent';
 import RotateWorkComponent from '../RotateWorkComponent';
-
+import LayoutWorkComponent from '../LayoutWorkComponent';
 
 const WorkComponent = ({ id, ...props }) => {
     switch (id) {
@@ -30,6 +30,8 @@ const WorkComponent = ({ id, ...props }) => {
             return <EffectWorkComponent featureId={FeatureMap.Retro.id} {...props} />
         case FeatureMap.Grayscale.id:
             return <EffectWorkComponent featureId={FeatureMap.Grayscale.id} {...props} />
+        case FeatureMap.Layout.id:
+            return <LayoutWorkComponent {...props} />
         default:
             break;
     }

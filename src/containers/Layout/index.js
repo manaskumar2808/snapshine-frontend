@@ -15,7 +15,7 @@ const Layout = () => {
                 <Row>
                     <Toolbar activeTool={tool} setTool={setTool} />
                     <div style={{ width: 5 }} />
-                    <Editor tool={tool} />
+                    <Editor id={tool ? tool.id : null} />
                     <Canvas />
                 </Row>
             </Column>

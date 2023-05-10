@@ -8,6 +8,7 @@ import BasicAdjustWrapper from "../BasicAdjustWrapper";
 import ColorWrapper from "../ColorWrapper";
 import InvertWrapper from "../InvertWrapper";
 import EffectWrapper from "../EffectWrapper";
+import LayoutWrapper from "../LayoutWrapper";
 
 const Wrapper = ({ children }) => { 
     const feature = useSelector(({ ftr }) => ftr.feature);
@@ -53,28 +54,19 @@ const Wrapper = ({ children }) => {
                 </InvertWrapper>
             );
         case FeatureMap.Scenes.id:
-            return (
-                <EffectWrapper>
-                    {children}
-                </EffectWrapper>
-            );
         case FeatureMap.Classic.id:
-            return (
-                <EffectWrapper>
-                    {children}
-                </EffectWrapper>
-            );
         case FeatureMap.Retro.id:
-            return (
-                <EffectWrapper>
-                    {children}
-                </EffectWrapper>
-            );
         case FeatureMap.Grayscale.id:
             return (
                 <EffectWrapper>
                     {children}
                 </EffectWrapper>
+            );
+        case FeatureMap.Layout.id:
+            return (
+                <LayoutWrapper>
+                    {children}
+                </LayoutWrapper>
             );
         default:
             break;
