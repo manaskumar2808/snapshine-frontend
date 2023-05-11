@@ -56,10 +56,7 @@ const reducer = (state = initialState, action) => {
                     active: true,
                 }
             } else {
-                state = {
-                    ...state,
-                    active: false,
-                }
+                state = initialState;
             }
             break;
         default:

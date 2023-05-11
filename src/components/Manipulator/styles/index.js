@@ -6,20 +6,21 @@ export const Container = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    height: ${({ height }) => `${height}px`};
-    width: ${({ width }) => `${width}px`};
 `;
 
 export const ResizeWrapper = styled(ResizableBox)``;
 
 export const Display = styled.div`
     position: relative;
+    height: ${({ height }) => `${height}px`};
+    width: ${({ width }) => `${width}px`};
 `;
 
 export const Photo = styled.img`
     height: 100%;
     width: 100%;
     object-fit: contain;
+    /* border: ${({ theme }) => `2px solid ${theme.colors.dark}`}; */
 `;
 
 export const DragHandler = styled.div`

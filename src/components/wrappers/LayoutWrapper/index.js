@@ -5,6 +5,7 @@ import { PHOTO_ID } from '@/constants/Document';
 import { setImage } from '@/store/actions/image';
 import { layoutImage, setLayoutDimension } from '@/store/actions/layout';
 import { setActiveFeature } from '@/store/actions/feature';
+import { DEFAULT_HEIGHT, DEFAULT_WIDTH } from '@/constants/Default';
 
 const LayoutWrapper = ({ children }) => {
     const dispatch = useDispatch();
@@ -18,6 +19,8 @@ const LayoutWrapper = ({ children }) => {
     const [actualLayoutHeight, setActualLayoutHeight] = useState(0);
     const [actualLayoutWidth, setActualLayoutWidth] = useState(0);
 
+    const { min } = Math;
+
     useEffect(() => { 
         if (active)
             onComplete();
@@ -25,9 +28,19 @@ const LayoutWrapper = ({ children }) => {
 
     useEffect(() => { 
         const layoutAspect = layoutWidth / layoutHeight;
-        setActualLayoutHeight(layoutHeight + 2 * layoutBorder);
-        setActualLayoutWidth((layoutHeight + 2 * layoutBorder) * layoutAspect);
-    }, [layoutHeight, layoutWidth, layoutBorder]);
+        let height, width;
+
+        if (layoutAspect > 1) {
+            width = layoutWidth + 2 * layoutBorder;
+            height = width / layoutAspect;
+        } else {
+            height = layoutHeight + 2 * layoutBorder;
+            width = height * layoutAspect;
+        }
+        
+        setActualLayoutHeight(height);
+        setActualLayoutWidth(width);
+    }, [layoutHeight, layoutWidth, layoutBorder, min]);
 
     useEffect(() => { 
         if (!image || layoutHeight === 0)
@@ -71,16 +84,14 @@ const LayoutWrapper = ({ children }) => {
         const layoutAspect = layoutWidth / layoutHeight;
         let drawWidth, drawHeight, x, y;
         if (aspect > layoutAspect) {
-            // landscape image
-            drawWidth = layoutWidth * scaleX;
+            drawWidth = (layoutWidth) * scaleX;
             drawHeight = drawWidth / aspect;
-            x = layoutBorder * scaleX;
+            x = (imageWidth * scaleX - drawWidth) / 2;
             y = (imageHeight * scaleY - drawHeight) / 2;
         } else {
-            // portrait image
-            drawHeight = layoutHeight * scaleY;
+            drawHeight = (layoutHeight) * scaleY;
             drawWidth = drawHeight * aspect;
-            y = layoutBorder * scaleY;
+            y = (imageHeight * scaleY - drawHeight) / 2;
             x = (imageWidth * scaleX - drawWidth) / 2;
         }
 
@@ -96,19 +107,31 @@ const LayoutWrapper = ({ children }) => {
 
         const src = canvas.toDataURL("image/jpeg");
 
+        let height = imageHeight;
+        let width = imageWidth;
+        let aspectRatio = imageWidth / imageHeight;
+
+        if (aspectRatio > 1) {
+            width = min(DEFAULT_WIDTH, width);
+            height = width / aspectRatio;
+        } else {
+            height = min(DEFAULT_HEIGHT, height);
+            width = aspectRatio * height;
+        }
+
         dispatch(
             setImage({
                 ...image,
                 src,
-                height: imageHeight,
-                width: imageWidth,
-                aspectRatio: imageWidth / imageHeight,
+                height,
+                width,
+                aspectRatio,
             })
         );
         dispatch(setLayoutDimension(imageHeight, imageWidth));
         dispatch(setActiveFeature(null));
         dispatch(layoutImage(false));
-    }, [dispatch, image, layoutHeight, layoutWidth, layoutBorder, layoutColor]);
+    }, [dispatch, image, layoutHeight, layoutWidth, layoutBorder, layoutColor, actualLayoutHeight, actualLayoutWidth, min]);
 
     return (
         <Container

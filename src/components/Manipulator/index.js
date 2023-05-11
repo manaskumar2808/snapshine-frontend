@@ -65,13 +65,17 @@ const Manipulator = () => {
     }, []);
 
     return (
-        <Container width={image.width} height={image.height}>
+        <Container>
             {/* <ResizeWrapper width={size.width} height={size.height} onResize={resizeHandler}> */}
                 <DragWrapper>
-                    <Display>
+                    <Display height={image.height} width={image.width}>
                         <Wrapper>
                             <ZoomWrapper>
-                                <Photo id={PHOTO_ID} src={image.src} alt={image.alt} />
+                                <Photo
+                                    id={PHOTO_ID}
+                                    src={image.src}
+                                    alt={image.alt}
+                                />
                             </ZoomWrapper>
                         </Wrapper>
                     </Display>
