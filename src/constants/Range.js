@@ -27,3 +27,6 @@ export const MIN_GRAYSCALE = 0;
 
 export const MAX_LAYOUT_BORDER = 100;
 export const MIN_LAYOUT_BORDER = 0;
+
+export const MAX_FRAME_SIZE = 50;
+export const MIN_FRAME_SIZE = 0;

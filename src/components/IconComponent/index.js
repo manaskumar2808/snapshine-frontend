@@ -35,6 +35,8 @@ const IconComponent = ({ id, ...props }) => {
             return <ThemeComponent src={GRAYSCALE.SRC} alt={GRAYSCALE.ALT} size={themeSize} />
         case FeatureMap.Layout.id:
             return <BsAspectRatio {...props} />
+        case FeatureMap.ClassicFrame.id:
+            return <TbFrame {...props} />
         case CropOptionMap.FreeForm.id:
             return <FiCrop {...props} />
         case CropOptionMap.OriginalRation.id:

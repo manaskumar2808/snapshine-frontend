@@ -131,7 +131,7 @@ const LayoutWrapper = ({ children }) => {
         dispatch(setLayoutDimension(imageHeight, imageWidth));
         dispatch(setActiveFeature(null));
         dispatch(layoutImage(false));
-    }, [dispatch, image, layoutHeight, layoutWidth, layoutBorder, layoutColor, actualLayoutHeight, actualLayoutWidth, min]);
+    }, [dispatch, image, layoutHeight, layoutWidth, layoutColor, actualLayoutHeight, actualLayoutWidth, min]);
 
     return (
         <Container

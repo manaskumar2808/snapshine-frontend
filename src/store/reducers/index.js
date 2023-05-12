@@ -11,6 +11,7 @@ import ColorReducer from './color';
 import InvertReducer from './invert';
 import EffectReducer from './effect';
 import LayoutReducer from './layout';
+import FrameReducer from './frame';
 
 const reducerMap = {
     img: ImageReducer,
@@ -26,6 +27,7 @@ const reducerMap = {
     ivt: InvertReducer,
     eft: EffectReducer,
     lyt: LayoutReducer,
+    frm: FrameReducer,
 };
 
 export default reducerMap;

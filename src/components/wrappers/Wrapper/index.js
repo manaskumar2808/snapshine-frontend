@@ -9,6 +9,7 @@ import ColorWrapper from "../ColorWrapper";
 import InvertWrapper from "../InvertWrapper";
 import EffectWrapper from "../EffectWrapper";
 import LayoutWrapper from "../LayoutWrapper";
+import ClassicFrameWrapper from "../ClassicFrameWrapper";
 
 const Wrapper = ({ children }) => { 
     const feature = useSelector(({ ftr }) => ftr.feature);
@@ -67,6 +68,12 @@ const Wrapper = ({ children }) => {
                 <LayoutWrapper>
                     {children}
                 </LayoutWrapper>
+            );
+        case FeatureMap.ClassicFrame.id:
+            return (
+                <ClassicFrameWrapper>
+                    {children}
+                </ClassicFrameWrapper>
             );
         default:
             break;

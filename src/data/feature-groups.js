@@ -5,7 +5,8 @@ export const FeatureGroupTitle = {
     SIZE: 'Size',
     BRIGHTNESS_AND_COLOR: 'Brightness & Color',
     FILTERS: 'Filters',
-    LAYOUT: 'Layout'
+    LAYOUT: 'Layout',
+    FRAME: 'Frame',
 };
 
 export const FeatureGroupMap = {
@@ -13,6 +14,7 @@ export const FeatureGroupMap = {
     BrightnessAndColor: new FeatureGroupType('fg01', FeatureGroupTitle.BRIGHTNESS_AND_COLOR, [FeatureMap.BasicAdjust, FeatureMap.Color, FeatureMap.Invert]),
     Filters: new FeatureGroupType('fg02', FeatureGroupTitle.FILTERS, [FeatureMap.Scenes, FeatureMap.Classic, FeatureMap.Retro, FeatureMap.Grayscale]),
     Layout: new FeatureGroupType('fg03', FeatureGroupTitle.LAYOUT, [FeatureMap.Layout]),
+    Frame: new FeatureGroupType('fg04', FeatureGroupTitle.FRAME, [FeatureMap.ClassicFrame])
 };
 
 export const FeatureGroups = Object.values(FeatureGroupMap).map(fg => fg);

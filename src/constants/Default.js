@@ -21,6 +21,9 @@ export const DEFAULT_SHADOW_COLOR = 'black';
 export const DEFAULT_LAYOUT_BORDER = 0;
 export const DEFAULT_LAYOUT_COLOR = 'white';
 
+export const DEFAULT_FRAME_SIZE = 1;
+export const DEFAULT_FRAME_COLOR = 'black';
+
 export const DEFAULT_PROPERTIES = {
     brightness: DEFAULT_BRIGHTNESS,
     contrast: DEFAULT_CONTRAST,
