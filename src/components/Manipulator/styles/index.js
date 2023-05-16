@@ -1,14 +1,12 @@
-import { ResizableBox } from 'react-resizable';
+import { Image, Stage } from 'react-konva';
 import styled from 'styled-components/macro';
 
-export const Container = styled.div`
+export const Container = styled(Stage)`
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
 `;
-
-export const ResizeWrapper = styled(ResizableBox)``;
 
 export const Display = styled.div`
     position: relative;
@@ -16,7 +14,7 @@ export const Display = styled.div`
     width: ${({ width }) => `${width}px`};
 `;
 
-export const Photo = styled.img`
+export const Photo = styled(Image)`
     height: 100%;
     width: 100%;
     object-fit: contain;

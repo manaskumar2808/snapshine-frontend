@@ -11,7 +11,7 @@ import EffectWrapper from "../EffectWrapper";
 import LayoutWrapper from "../LayoutWrapper";
 import ClassicFrameWrapper from "../ClassicFrameWrapper";
 
-const Wrapper = ({ children }) => { 
+const Wrapper = ({ children, stageRef }) => { 
     const feature = useSelector(({ ftr }) => ftr.feature);
 
     if (!feature)
@@ -20,7 +20,7 @@ const Wrapper = ({ children }) => {
     switch (feature.id) {
         case FeatureMap.Crop.id:
             return (
-                <CropWrapper>
+                <CropWrapper stageRef={stageRef}>
                     {children}
                 </CropWrapper>
             );

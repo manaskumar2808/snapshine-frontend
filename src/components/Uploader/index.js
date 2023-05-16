@@ -46,7 +46,6 @@ const Uploader = () => {
 
     const uploadHandler = async (e) => { 
         const file = e.target.files[0];
-        // const src = URL.createObjectURL(file);
         const alt = file.name;
         const path = file.pathname;
         const {src, height, width, naturalHeight, naturalWidth, aspectRatio} = await calculateProperties(file);

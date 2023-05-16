@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Container } from './styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { setImage } from '@/store/actions/image';
@@ -8,13 +8,28 @@ import { setActiveFeature } from '@/store/actions/feature';
 import { lockAspectRatio } from '@/utilities/crop';
 import { CropOptions } from '@/data/crop-options';
 import { PHOTO_ID } from '@/constants/Document';
+import { Rect, Transformer } from 'react-konva';
+import { useTheme } from 'styled-components';
 
-const CropWrapper = ({ children }) => { 
+const CropWrapper = ({ children, stageRef }) => { 
     const dispatch = useDispatch();
+    const theme = useTheme();
+
     const image = useSelector(({ img }) => img.image);
     const active = useSelector(({ crp }) => crp.active);
     const crop = useSelector(({ crp }) => crp.cropParams);
     const cropOptionId = useSelector(({ crp }) => crp.cropOptionId);
+
+    const [cropRect, setCropRect] = useState(null);
+    const transformerRef = useRef(null);
+
+    const strokeWidth = 2;
+
+    useEffect(() => { 
+        if (!image)
+            return;
+        setCropRect({ x: 0, y: 0, width: image.width, height: image.height });
+    }, [image]);
 
     useEffect(() => { 
         if (image) {
@@ -31,85 +46,81 @@ const CropWrapper = ({ children }) => {
 
     useEffect(() => { 
         if (active)
-            onCropComplete();
-    }, [active, onCropComplete]);
+            onComplete();
+    }, [active, onComplete]);
     
     const setCrop = (c) => { 
         const cropOption = CropOptions.find(co => co.id === cropOptionId);
         dispatch(setCropParams(lockAspectRatio(c, crop, image, cropOption)));
     }
 
-    const onCropComplete = useCallback(() => {
-        const canvas = document.createElement('canvas');
-        const imageElement = document.getElementById(PHOTO_ID);
+    const onComplete = useCallback(() => {
+        const { x, y, width, height } = cropRect;
+        const canvas = stageRef.current.toCanvas({x,y,width,height});
+        const src = canvas.toDataURL('image/jpeg');
 
-        const scaleX = image.naturalWidth / image.width;
-        const scaleY = image.naturalHeight / image.height;
-        const cropWidth = crop.width * scaleX;
-        const cropHeight = crop.height * scaleY;
-        const cropX = crop.x * scaleX;
-        const cropY = crop.y * scaleY;
-        canvas.width = cropWidth
-        canvas.height = cropHeight;
-        const ctx = canvas.getContext('2d');
-    
-        const pixelRatio = window.devicePixelRatio;
-        canvas.width = cropWidth * pixelRatio;
-        canvas.height = cropHeight * pixelRatio;
-        ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
-        ctx.imageSmoothingQuality = 'high';
-    
-        ctx.drawImage(
-            imageElement,
-            cropX,
-            cropY,
-            cropWidth,
-            cropHeight,
-            0,
-            0,
-            cropWidth,
-            cropHeight,
-        );
-
-        const src = canvas.toDataURL("image/jpeg");
-        const alt = image.alt;
-        const aspectRatio = canvas.width / canvas.height;
-        
-        let height, width;
-        if (canvas.width > canvas.height) {
-            height = DEFAULT_WIDTH / aspectRatio;
-            width = DEFAULT_WIDTH;
-        } else {
-            height = DEFAULT_HEIGHT;
-            width = aspectRatio * DEFAULT_HEIGHT;
-        }
-        
-        let naturalHeight = image.naturalHeight;
-        let naturalWidth = image.naturalWidth;
-        let naturalAspectRatio = naturalWidth / naturalHeight;
-        
-        if (aspectRatio > naturalAspectRatio) {
-            naturalHeight = naturalWidth / aspectRatio;
-        } else {
-            naturalWidth = aspectRatio * naturalHeight;
-        }
-
-        dispatch(setImage({ ...image, src, alt, height, width, aspectRatio, naturalHeight, naturalWidth }));
+        dispatch(setImage({ ...image, src }));
         dispatch(setActiveFeature(null));
         dispatch(cropImage(false));
-    }, [crop, image, dispatch]);
+    }, [image, dispatch, cropRect, stageRef]);
+
+    const onDragEnd = (e) => {
+        setCropRect({
+            ...cropRect,
+            x: e.target.x(),
+            y: e.target.y()
+        });
+    }
+
+    const onTransformEnd = (e) => {
+        const node = e.target;
+        const scaleX = node.scaleX();
+        const scaleY = node.scaleY();
+
+        setCropRect({
+            ...cropRect,
+            width: Math.max(2, node.width() * scaleX),
+            height: Math.max(2, node.height() * scaleY),
+            x: node.x(),
+            y: node.y()
+        });
+        
+        node.scaleX(1);
+        node.scaleY(1);
+    }
 
     return (
-        <Container
-            // ruleOfThirds
-            crop={crop}
-            onChange={c => setCrop(c)}
-            // maxHeight={image ? image.height : 0}
-            // minWidth={image ? image.width : 0}
-            // keepSelection={cropOption && cropOption.id !== CropOptionMap.FreeForm.id}
-            // circularCrop={cropOption && cropOption.id === CropOptionMap.Circle.id}
-        >
+        <Container>
             {children}
+            {cropRect && (
+                <>
+                    <Rect
+                        x={cropRect.x}
+                        y={cropRect.y}
+                        width={cropRect.width}
+                        height={cropRect.height}
+                        stroke={theme.colors.red}
+                        strokeWidth={strokeWidth}
+                        draggable
+                        onDragEnd={onDragEnd}
+                        onTransformEnd={onTransformEnd}
+                        
+                    />  
+                    <Transformer
+                        anchorSize={10}
+                        borderDash={[6, 2]}
+                        borderStroke={theme.colors.red}
+                        ref={transformerRef}
+                        boundBoxFunc={(oldBox, newBox) => {
+                            if (newBox.width < 10 || newBox.height < 10)
+                                return oldBox;
+                            return newBox;
+                        }}
+                        enabledAnchors={['top-left', 'top-right', 'bottom-left', 'bottom-right']}
+                        resizeEnabled
+                    />
+                </>
+            )}
         </Container>
     );
 }

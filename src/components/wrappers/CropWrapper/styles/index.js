@@ -1,7 +1,8 @@
 import styled from 'styled-components/macro';
 import ReactCrop from 'react-image-crop';
+import { Layer } from 'react-konva';
 
-export const Container = styled(ReactCrop)`
+export const Container = styled(Layer)`
     .ReactCrop {
         border: 1px solid black;
     }
