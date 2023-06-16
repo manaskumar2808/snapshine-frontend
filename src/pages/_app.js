@@ -1,5 +1,5 @@
 import '@/styles/globals.css';
-import { APP_THEME } from '@/constants/Theme';
+import { getAppTheme } from '@/constants/Theme';
 import { ThemeProvider } from 'styled-components';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-resizable/css/styles.css';
@@ -8,8 +8,10 @@ import 'react-color-picker/index.css'
 import { wrapper } from '../store';
 
 const App = ({ Component, pageProps }) => {
+  const dark = true;
+
   return (
-    <ThemeProvider theme={APP_THEME}>
+    <ThemeProvider theme={getAppTheme(dark)}>
       <Component {...pageProps} />
     </ThemeProvider>
   );

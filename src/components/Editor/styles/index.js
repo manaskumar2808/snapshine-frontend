@@ -1,7 +1,6 @@
 import styled from 'styled-components/macro';
 
 export const Container = styled.div`
-    background-color: #fff;
     border: none;
     border-radius: 5px;
     padding: 20px;
@@ -10,6 +9,8 @@ export const Container = styled.div`
     height: 100%;
     width: 300px;
     box-sizing: border-box;
+    background-color: ${({ theme }) => theme.colors.background};
+    color: ${({ theme }) => theme.colors.foreground};
 `;
 
 export const List = styled.div`

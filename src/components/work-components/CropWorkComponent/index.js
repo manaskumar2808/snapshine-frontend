@@ -17,7 +17,7 @@ const CropWorkComponent = () => {
     const cropOptionId = useSelector(({ crp }) => crp.cropOptionId);
 
     const iconSize = 23;
-    const iconColor = theme.colors.dark;
+    const iconColor = theme.colors.foreground;
 
     useEffect(() => { 
         if (crop)

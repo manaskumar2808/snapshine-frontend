@@ -8,7 +8,7 @@ const Icon = ({ id, active, text, toolClickHandler }) => {
     return (
         <Container onClick={toolClickHandler} active={active}>
             <Display>
-                <IconComponent id={id} size={25} color={theme.colors.grey} />
+                <IconComponent id={id} size={25} color={theme.colors.foreground} />
                 {text && text.trim().length && <Text>
                     {text}
                 </Text>}

@@ -12,6 +12,7 @@ export const Text = styled.p`
     font-family: 'Dancing Script';
     font-size: 30px;
     font-weight: 800;
+    color: ${({ theme }) => theme.colors.foreground};
 
     ::first-letter {
         color: ${({ theme }) => theme.colors.primary};

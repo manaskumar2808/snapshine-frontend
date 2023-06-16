@@ -14,7 +14,7 @@ const Feature = ({ id, title, featureOptionsId }) => {
     const feature = useSelector(({ftr}) => ftr.feature);
 
     const iconSize = 18;
-    const iconColor = theme.colors.dark;
+    const iconColor = theme.colors.foreground;
 
     const [openFeature, setOpenFeature] = useState(false);
 
