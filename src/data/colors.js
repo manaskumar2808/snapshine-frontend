@@ -1,5 +1,7 @@
 import { ColorType } from '@/types/ColorType';
-import { APP_THEME } from '../constants/Theme';
+import { getAppTheme } from '../constants/Theme';
+
+const APP_THEME = getAppTheme(true);
 
 export const ColorMap = { 
     Red: new ColorType('c00', APP_THEME.colors.red),

@@ -11,7 +11,7 @@ export const Container = styled.div`
 export const Display = styled.div`
     overflow: hidden;
     border-radius: 5px;
-    border: ${({ active, theme }) => active ? `0.5px solid ${theme.colors.blue}` : 'none'};
+    border: ${({ active, theme }) => active ? `1px solid ${theme.colors.blue}` : 'none'};
     height: 80px;
     width: 100%;
 `;
@@ -37,6 +37,6 @@ export const TitleContainer = styled.div``;
 
 export const Title = styled.p`
     font-size: 14px;
-    color: ${({ theme }) => theme.colors.dark};
+    color: ${({ theme }) => theme.colors.foreground};
     margin: 0;
 `;

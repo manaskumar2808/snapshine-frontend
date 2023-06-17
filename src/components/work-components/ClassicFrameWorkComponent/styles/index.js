@@ -20,7 +20,8 @@ export const Frame = styled.div`
     border-radius: 5px;
     box-sizing: border-box;
     border: ${({ theme, title, frameColor }) => `5px ${title.toLowerCase()} ${frameColor}`};
-    background-color: ${({ theme, active }) => active ? `${theme.colors.gray}` : `${theme.colors.milk}`};
+    background-color: ${({ theme }) => `${theme.colors.activebg}`};
+    color: ${({ theme }) => `${theme.colors.foreground}`};
     overflow: hidden;
 
     :hover {
@@ -38,11 +39,11 @@ export const FrameContent = styled.div`
 
 export const FrameText = styled.p`
     font-size: 11px;
-    color: ${({ theme }) => `${theme.colors.dark}`};
+    color: ${({ theme }) => `${theme.colors.foreground}`};
     margin: 0;
 `;
 
 export const FrameTitle = styled.p`
     font-size: 17px;
-    color: ${({ theme }) => theme.colors.dark};
+    color: ${({ theme }) => theme.colors.foreground};
 `;

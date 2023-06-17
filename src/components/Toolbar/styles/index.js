@@ -8,4 +8,6 @@ export const Container = styled.div`
     border: none;
     overflow: hidden;
     box-sizing: border-box;
+    background-color: ${({ theme }) => theme.colors.background};
+    color: ${({ theme }) => theme.colors.foreground};
 `;

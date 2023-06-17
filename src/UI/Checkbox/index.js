@@ -13,6 +13,9 @@ const Checkbox = ({ label, name, size = 'md', color, checked, setChecked }) => {
             onChange={e => setChecked(e.target.checked)}
             size={size}
             color={color ? color : theme.colors.blue}
+            style={{ 
+                color: theme.colors.foreground
+            }}
         />
     );
 }

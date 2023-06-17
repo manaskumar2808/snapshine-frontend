@@ -21,7 +21,8 @@ export const Layout = styled.div`
     width: 80px;
     border-radius: 5px;
     border: ${({ theme, active }) => active ? `2.5px solid ${theme.colors.blue}` : `none`};
-    background-color: ${({ theme }) => `${theme.colors.milk}`};
+    background-color: ${({ theme }) => `${theme.colors.activebg}`};
+    color: ${({ theme }) => `${theme.colors.foreground}`};
     overflow: hidden;
 
     :hover {
@@ -39,7 +40,7 @@ export const LayoutContent = styled.div`
 
 export const LayoutText = styled.p`
     font-size: 11px;
-    color: ${({ theme }) => `${theme.colors.dark}`};
+    color: ${({ theme }) => `${theme.colors.foreground}`};
     margin: 0;
 `;
 
@@ -57,5 +58,5 @@ export const LayoutDimension = styled.div`
 
 export const LayoutTitle = styled.p`
     font-size: 17px;
-    color: ${({ theme }) => theme.colors.dark};
+    color: ${({ theme }) => theme.colors.foreground};
 `;
