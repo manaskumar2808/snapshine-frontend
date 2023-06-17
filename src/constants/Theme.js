@@ -18,7 +18,7 @@ export const getAppTheme = (dark = false) => ({
         white: '#ffffff',
         pink: '#d90295',
         brown: '#452424',
-        background: dark ? '#292929' : '#e8e8e8',
+        background: dark ? '#292929' : '#ffffff',
         layoutbg: dark ? '#4a4a4a' : '#ededed',
         activebg: dark ? '#121212' : '#e3e3e3',
         foreground: dark ? '#e8e8e8' : '#292929',

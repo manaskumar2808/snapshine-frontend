@@ -6,7 +6,7 @@ export const Container = styled.div`
 
 export const InputTitle = styled.p`
     font-size: 17px;
-    color: ${({ theme }) => theme.colors.dark};
+    color: ${({ theme }) => theme.colors.foreground};
     margin: 0;
 `;
 
